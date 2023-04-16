@@ -1,0 +1,46 @@
+.footer{
+ display: flex;
+ flex-direction: column;
+ background-color: #0C0F24;
+}
+
+.container{
+ width: min(90%, 1200px);
+ margin-inline: auto; 
+ padding-block: 2rem;
+}
+
+.logo{
+ font-size: 1.4rem;
+}
+
+.header nav{
+ display: flex;
+ gap: 2rem;
+ font-size: 1.4rem;
+}
+
+.social{
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ margin-top: 2rem;
+}
+
+.social h2{
+ color: #f2f2f2;
+ font-size: 1.4rem;
+}
+
+.social .networks{
+ display: flex;
+ gap: 2rem;
+ align-items: center;
+ font-size: 2rem;
+}
+
+.social .networks i{
+ display: inline-block;
+ font-size: 2.5rem;
+ color: #f2f2f2;
+}
