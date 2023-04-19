@@ -24,17 +24,14 @@ const Home: NextPage = () => {
               <input type="text" placeholder='Buscar vivienda en ciudad, municipio, barrio' />
             </div>
           </div>
-          <div className="scroll-indicator">
-            <span>Desplázate hacia abajo</span>
-            <i className="bx bx-chevrons-down"></i>
-          </div>
+        
       </div>
 
       <section className={styles.properties_section}>
         <div className={styles.header}>
           <div>
             <h2>Propidades Exclusivas</h2>
-            <p>Preventas perfectas para ti</p>          
+            <p>Proyectos revisados detalladamente con el fin de asegurarnos que tengan viabilidad financiera, legal y técnica.</p>          
           </div>
           <Link href="/">Ver todos los inmuebles </Link>
         </div>
@@ -79,7 +76,7 @@ const Home: NextPage = () => {
       <section className={styles.properties_section}>
         <div className={styles.header}>
           <div>
-            <h2>Propidades Recientes</h2>
+            <h2>Propidades en General</h2>
             <p>Viviendas en Mexico</p>          
           </div>
           <Link href="/">Ver todos los inmuebles </Link>

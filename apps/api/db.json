@@ -1,0 +1,83 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "properties": [
+    {
+      "name": "Quinta Maria Isabel",
+      "address": "Avenida Maria Isabel",
+      "city": "Nuevo Ideal",
+      "state": "Durango",
+      "country": "Mexico",
+      "price": "350000",
+      "description": "",
+      "area": "360m2",
+      "garage": "1",
+      "bedrooms": "4",
+      "bathrooms": "3.5",
+      "antiquity": "1",
+      "balcony": "2",
+      "kitcken": 0,
+      "propertyStatus": "Nueva",
+      "type": "House",
+      "createdAt": "Wed Mar 29 2023 15:57:38 GMT-0500 (Colombia Standard Time)",
+      "kitchen": "1"
+    },
+    {
+      "id": "883f21f1-4235-43cd-8cce-9dd7514d876e",
+      "name": "Hipodromo Condesa",
+      "address": "Avenida Mazatlan 161",
+      "city": "Mazatlan",
+      "state": "Ciudad de Mexico",
+      "country": "Mexico",
+      "price": "718506",
+      "description": "",
+      "area": "240m2",
+      "garage": "2",
+      "bedrooms": "2",
+      "bathrooms": "2",
+      "antiquity": "1",
+      "balcony": "1",
+      "kitcken": 0,
+      "propertyStatus": "Nueva",
+      "type": "House",
+      "createdAt": "Wed Mar 29 2023 16:27:58 GMT-0500 (Colombia Standard Time)",
+      "kitchen": "1"
+    },
+    {
+      "id": "b340e595-50f2-4864-9e89-0bdbe4a06b87",
+      "name": "Mazatlan House",
+      "address": "Avenida Sna Ignicacion",
+      "city": "Ciudad de Mexico",
+      "state": "Estado de Mexico",
+      "country": "Mexcio",
+      "price": "350000",
+      "description": "",
+      "area": "250m2",
+      "garage": "1",
+      "bedrooms": "4",
+      "bathrooms": "2",
+      "antiquity": "1",
+      "balcony": "1",
+      "kitcken": 0,
+      "propertyStatus": "Nueva",
+      "type": "Condo",
+      "createdAt": "Wed Mar 29 2023 18:55:46 GMT-0500 (Colombia Standard Time)",
+      "kitchen": "1"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

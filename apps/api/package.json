@@ -1,0 +1,31 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node-dev ./src/server",
+    "start": "node ./build/server/index.js",
+    "build": "npx tsc",
+    "clean": "rm -rf ./build"
+  },
+  "keywords": [],
+  "author": "Nestor Mosquera",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "8.2.1",
+    "@fastify/multipart": "7.6.0",
+    "@itaaj/business-logic": "workspace:*",
+    "@itaaj/data-sources": "workspace:*",
+    "@itaaj/entities": "workspace:^",
+    "dotenv": "16.0.3",
+    "fastify": "4.15.0",
+    "json-server": "0.17.3"
+  },
+  "devDependencies": {
+    "@types/json-server": "^0.14.4",
+    "@types/node": "^18.15.11",
+    "ts-node-dev": "^2.0.0",
+    "tslib": "^2.5.0"
+  }
+}

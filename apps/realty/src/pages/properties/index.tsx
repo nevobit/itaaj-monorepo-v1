@@ -30,9 +30,31 @@ const Properties = () => {
         <option value="">Banos</option>        
        </select>
       </div>
+     
+      <div className={styles.properties}>
+      <div>
+        <h2 className={styles.title}>Viviendas y casas en venta en Mexico</h2>
+        <p>14.556 usadas y 3.194 de obra nueva</p>
+        <div className={styles.option}>
+          <span>
+          <i className='bx bx-info-circle'></i>
+            <p>Ordenar</p>
+          </span>
+          <select name="" id="">
+            <option value="">Puntuacion</option>
+            <option value="">Mas recientes</option>
+            <option value="">Mas baratos</option>
+            <option value="">Mas caros</option>
+            <option value="">Mas grandes</option>
+            <option value="">Mas pequenos</option>
+          </select>
+        </div>
+      </div>
       {properties.map((property) => (
        <Property {...property} />      
       ))}
+      </div>
+      
     </Layout>
   )
 }

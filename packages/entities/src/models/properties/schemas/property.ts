@@ -1,4 +1,4 @@
-import { Base } from "../../../common";
+import { Base, StatusType } from "../../../common";
 
 export enum PropertyType {
  HOUSE= 'house',
@@ -8,9 +8,20 @@ export enum PropertyType {
  OTHER = 'other'
 }
 
-interface Location {
+export enum Category {
+ EXCLUSIVE= 'exclusive',
+ GENERAL= 'general',
+}
+
+export interface Location {
  latitude: number;
  longitude: number;
+}
+
+export interface Area{
+ land_area: number;
+ building_area: number;
+ total_area: number;
 }
 
 export interface Property extends Base{
@@ -20,9 +31,13 @@ export interface Property extends Base{
  city: string;
  state: string;
  country: string;
+ neighborhood: string;
+ street: string;
+ external_number: string;
+ internal_number: string;
  location: Location;
  price: number;
- area: number;
+ area: Area;
  garage: number;
  images: string[];
  amenities: string[]
@@ -36,6 +51,6 @@ export interface Property extends Base{
  propertyStatus: string;
  type: PropertyType;
  blockchainId: string;
- balcony: number;
- kitcken: number;
+ category: Category;
+ partner: string;
 }
