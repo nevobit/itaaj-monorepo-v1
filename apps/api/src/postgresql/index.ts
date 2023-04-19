@@ -1,5 +1,5 @@
 import { DataSource } from 'typeorm';
-import  { PropertySchema }  from '@itaaj/entities';
+import { PropertySchema } from '../models';
 
 export const initPostgres = async () => {
  try{
@@ -12,7 +12,7 @@ export const initPostgres = async () => {
    database: 'itaaf-database',
    entities: [PropertySchema],
    synchronize: true,
-   dropSchema: true,
+   // dropSchema: true,
    ssl: {
     rejectUnauthorized: true
    }

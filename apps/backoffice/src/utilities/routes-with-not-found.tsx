@@ -1,4 +1,4 @@
-import NotFound from '@/screens/NotFound';
+import NotFound from '@/screens/NotFount';
 import { Routes, Route } from 'react-router-dom';
 
 interface Props {

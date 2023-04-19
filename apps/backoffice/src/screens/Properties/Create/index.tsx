@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Property } from "@itaaj/types";
 import { Button, Field, ImageInput, Input, TextEditor } from "@/components";
 import styles from "./Create.module.css";
 import {useDispatch} from 'react-redux'
@@ -7,7 +6,14 @@ import { createProperties } from "@/redux/states";
 import { useNavigate } from "react-router-dom";
 import { PrivateRoutes } from "@/constant-definitions";
 import {v4 as uuid} from 'uuid'
+import { useUploadImage } from "@/hooks/useUploadImage";
+
+const placeholderImage = 'https://via.placeholder.com/300x300';
+
+
 const CreatePropety: React.FC = () => {
+  const { isLoading, url, uploadImage, urls } = useUploadImage();
+  
   const [property, setProperty] = useState({
     id: uuid(),
     name: "",
@@ -17,7 +23,8 @@ const CreatePropety: React.FC = () => {
     country: "",
     price: 0,
     description: "",
-    area: 0,
+    area: {},
+    images: [],
     garage: 0,
     bedrooms: 0,
     bathrooms: 0,
@@ -27,14 +34,22 @@ const CreatePropety: React.FC = () => {
     propertyStatus: "",
     type: "condo",
     createdAt: new Date().toString(),
+    category: "general",
+    partner: ""
   });
+  
+  const addImages = (e: any) => {
+    uploadImage(e?.target?.files![0]);
+};
+
+  console.log(property)
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const onSubmit = (e: any) => {
     e.preventDefault();
-    dispatch(createProperties(property) as any)
+    dispatch(createProperties({...property, images: urls}) as any)
     navigate(`/${PrivateRoutes.PROPERTIES}`, {replace: true})
   };
 
@@ -42,6 +57,11 @@ const CreatePropety: React.FC = () => {
     const { name, value } = event.target;
     setProperty((prev) => ({ ...prev, [name]: value }));
   };
+  
+  const handleChangeArea = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setProperty((prev) => ({ ...prev, area: { ...prev.area, [name]: value}}));
+};
 
   return (
     <div className={styles.container}>
@@ -61,46 +81,92 @@ const CreatePropety: React.FC = () => {
         <Field label="State">
           <Input name="state" onChange={handleChange} />
         </Field>
+        
+        <Field label="Neighborhood">
+          <Input name="neighborhood" onChange={handleChange} />
+        </Field>
 
         <Field label="Country">
           <Input name="country" onChange={handleChange} />
+        </Field>
+        
+        <Field label="Street">
+          <Input name="street" onChange={handleChange} />
+        </Field>
+        
+        <Field label="External Number">
+          <Input name="external_number" onChange={handleChange} />
+        </Field>
+        
+        <Field label="Internal Number">
+          <Input name="internal_number" onChange={handleChange} />
         </Field>
 
         <Field label="Price">
           <Input name="price" onChange={handleChange} />
         </Field>
+        
         <Field label="Property description">
-          <TextEditor />
+          <TextEditor   onChange={(e) =>
+                                setProperty({
+                                    ...property,
+                                    description: e,
+                                })
+                            } />
         </Field>
       </div>
 
       <div className={styles.section}>
-        <Field label="Area">
-          <Input name="area" onChange={handleChange} />
+        <h4>Area</h4>
+        <Field label="Land Area">
+          <Input name="land_area" onChange={handleChangeArea} />
+        </Field>
+        
+        <Field label="Building Area">
+          <Input name="building_area" onChange={handleChangeArea} />
+        </Field>
+        
+        <Field label="Total Area">
+          <Input name="total_area" onChange={handleChangeArea} />
         </Field>
 
-        <Field label="Garage">
-          <Input name="garage" onChange={handleChange} />
-        </Field>
         <Field label="Bedrooms">
           <Input name="bedrooms" onChange={handleChange} />
         </Field>
+        
         <Field label="Bathrooms">
           <Input name="bathrooms" onChange={handleChange} />
         </Field>
+        
         <Field label="Antiquity">
           <Input name="antiquity" onChange={handleChange} />
         </Field>
+        
         <Field label="Balcony">
           <Input name="balcony" onChange={handleChange} />
         </Field>
+        
         <Field label="Kitchen">
           <Input name="kitchen" onChange={handleChange} />
         </Field>
       </div>
       <div className={styles.sidebar}>
         <div className={styles.section}>
-          <ImageInput />
+          <h3>Images</h3>
+          <ImageInput 
+             preview={url || placeholderImage}
+             onChange={(e) => addImages(e)}
+             loading={isLoading}
+             src={url || placeholderImage}
+             alt=""
+             width={300}
+             height={300}
+          />
+          <div className={styles.preview_container}>
+                            {urls?.map((image) => (
+                                <img key={image} className={styles.preview_img} src={image} alt="" />
+                            ))}
+                        </div>
         </div>
         <div className={styles.section}>
           <Field label="Property Status">
@@ -112,6 +178,20 @@ const CreatePropety: React.FC = () => {
             tip="A property can be a House, Apartment, Condo, Townhouse or other."
           >
             <Input name="type" onChange={handleChange} />
+          </Field>
+          
+          <Field
+            label="Partner"
+          >
+            <Input name="partner" onChange={handleChange} />
+          </Field>
+          
+          <Field label="Property Category">
+            <select name="category" onChange={handleChange}>
+              <option value="general">General</option>
+              <option value="exclusive">Exclusive</option>
+              
+            </select>
           </Field>
         </div>
         <Button

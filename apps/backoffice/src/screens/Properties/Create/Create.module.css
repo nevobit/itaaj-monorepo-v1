@@ -24,3 +24,7 @@
  flex-direction: column;
  gap: 2rem;
 }
+
+.preview_img {
+ max-width: 6rem;
+}

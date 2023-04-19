@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import styles from './Property.module.css'
 import { DivisaFormater } from '@/types/divisa-formater'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 const Property = ({image, price, type, name, bedroom, bathroom, area, description, slug}:any) => {
   const [url, setUrl] = useState<string>('');
@@ -15,7 +14,7 @@ const Property = ({image, price, type, name, bedroom, bathroom, area, descriptio
   }, [])
   return (
     <div className={styles.card}>
-      <Image src={image} width={100} height={100} />
+      <Image src={image} width={100} height={100} alt={name} />
       <div>
        <div className={styles.header}>
         <h2>ITAAJ &middot; Experto inmobiliario</h2>

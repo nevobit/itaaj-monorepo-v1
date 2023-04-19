@@ -3,7 +3,10 @@ const nextTranslate = require('next-translate-plugin');
 
 const nextConfig = {
   reactStrictMode: true,
-  ...nextTranslate()
+  ...nextTranslate(),
+    images: {
+    domains: ['res.cloudinary.com', 'ui-avatars.com'],
+  },
 };
 
 module.exports = nextConfig;

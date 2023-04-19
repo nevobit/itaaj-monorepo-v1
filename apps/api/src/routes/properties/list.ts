@@ -1,6 +1,5 @@
 import { FastifyReply, FastifyRequest, RouteOptions } from "fastify";
-// import { getAllProperties } from '@itaaj/business-logic';
-
+import { getAllProperties } from "../../properties";
 interface Query {
  page: number;
  limit: number;
@@ -14,8 +13,8 @@ export const getAllPropertiesRoute: RouteOptions = {
   try{
    const { query } = request;
    const {page, limit, search} = query as Query;
-   // const properties = await getAllProperties(page, limit);
-   reply.status(200).send();
+   const properties = await getAllProperties(page, limit, search);
+   reply.status(200).send(properties);
   }catch(err){
    reply.status(500).send(err);
   }

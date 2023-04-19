@@ -10,6 +10,9 @@ export class PropertySchema extends BaseEntity {
  uuid!: string;
  
  @Column({ default: '' })
+ slug!: string;
+ 
+ @Column({ default: '' })
  name!: string;
 
  @Column({ default: '' })
@@ -39,23 +42,23 @@ export class PropertySchema extends BaseEntity {
  @Column({ default: '' })
  internal_number!: string;
 
- @Column({ type: 'json', default: {} })
- location!: Location;
+ @Column({ type: 'json', default: "{}" })
+ location?: Location;
 
  @Column({ default: 0 })
  price!: number;
 
- @Column({ type: 'json', default: {} })
- area!: Area;
+ @Column({ type: 'json', default: "{}" })
+ area?: Area;
 
  @Column({ default: 0 })
  garage!: number;
 
- @Column('simple-array', { default: [] })
- images!: string[];
+ @Column('simple-array',{ default: "[]"})
+ images?: string[];
 
- @Column('simple-array', { default: [] })
- amenities!: string[];
+ @Column('simple-array', {default: "[]"})
+ amenities?: string[];
 
  @Column({ default: 0 })
  bedrooms!: number;
@@ -82,23 +85,23 @@ export class PropertySchema extends BaseEntity {
  propertyStatus?: string;
 
  @Column({ default: '' })
- type!: PropertyType;
+ type!: string;
 
  @Column({ default: '' })
  blockchainId?: string;
 
  @Column({ default: 'general' })
- category!: Category;
+ category!: string;
 
  @Column({ default: '' })
  partner!: string;
 
  @Column({ default: '' })
- status!: StatusType;
+ status!: string;
 
- @Column({ default: () => 'NOW()' })
+ @Column({ default: '' })
  createdAt!: string;
 
- @Column({ default: () => 'NOW()' })
+ @Column({ default: '' })
  updatedAt!: string;
 }

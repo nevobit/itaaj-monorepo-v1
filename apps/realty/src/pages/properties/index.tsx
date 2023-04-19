@@ -3,9 +3,9 @@ import SEO from '@/components/seo/seo'
 import React from 'react'
 import styles from './Properties.module.css'
 import Property from '@/components/Property'
-import properties from '@/_mock_/properties'
+import { NextPage } from 'next'
 
-const Properties = () => {
+const Properties:NextPage<{properties: any, count: number}> = ({properties, count}) => {
   return (
     <Layout>
      <SEO title='Propiedades' />
@@ -30,7 +30,13 @@ const Properties = () => {
         <option value="">Banos</option>        
        </select>
       </div>
-     
+     {count == 0? (
+      <div className={styles.notProperties}>
+        <div><i className='bx bx-shape-circle'></i></div>
+        <h2>No hay Propiedades</h2>
+        </div>
+     ): (
+      
       <div className={styles.properties}>
       <div>
         <h2 className={styles.title}>Viviendas y casas en venta en Mexico</h2>
@@ -50,13 +56,35 @@ const Properties = () => {
           </select>
         </div>
       </div>
-      {properties.map((property) => (
-       <Property {...property} />      
+      {properties?.map((property:any) => (
+       <Property key={property.uuid} {...property} />      
       ))}
       </div>
+     )}
       
     </Layout>
   )
 }
 
 export default Properties
+
+export const getServerSideProps: any = async () => {
+  const res = await fetch(
+    "https://itaaf-api-production.up.railway.app/api/v1/properties", {
+      method: "GET",
+      headers: {
+            "Content-Type": "application/json",
+      }
+    }
+  );
+
+  const result: any = await res.json();
+  // const resultsProducts: GetComputersResults = await resProducts.json();
+
+  return {
+    props: {
+      properties: result.items,
+      count: result.count
+    },
+  };
+};

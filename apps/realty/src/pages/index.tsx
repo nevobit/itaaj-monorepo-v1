@@ -4,10 +4,12 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { DivisaFormater } from '@/types/divisa-formater';
-import properties from '@/_mock_/properties';
+// import properties from '@/_mock_/properties';
 import Link from 'next/link';
 
-const Home: NextPage = () => {
+const Home: NextPage<{properties: any}> = ({properties}) => {
+  
+  console.log(properties)
   return (
     <Layout>
       <SEO title="Inicio" />
@@ -37,11 +39,11 @@ const Home: NextPage = () => {
         </div>
         <div className={styles.properties}>
           
-        {properties.map((property) => (
+        {properties?.filter((property:any) => property.category == 'exclusive').map((property:any) => (
           <div className={styles.property}>
             <div className={styles.image}>
               <Image
-                src={property.image}
+                src={property.images[0]}
                 width={500}
                 height={350}
                 alt={property.name}
@@ -83,11 +85,11 @@ const Home: NextPage = () => {
         </div>
         <div className={styles.properties}>
           
-        {properties.map((property) => (
+        {properties?.filter((property:any) => property.category != 'exclusive').map((property:any) => (
           <div className={styles.property}>
             <div className={styles.image}>
-              <Image
-                src={property.image}
+               <Image
+                src={property.images[0]}
                 width={500}
                 height={350}
                 alt={property.name}
@@ -138,3 +140,25 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+
+
+export const getServerSideProps: any = async () => {
+  const res = await fetch(
+    "https://itaaf-api-production.up.railway.app/api/v1/properties", {
+      method: "GET",
+      headers: {
+            "Content-Type": "application/json",
+      }
+    }
+  );
+
+  const result: any = await res.json();
+  // const resultsProducts: GetComputersResults = await resProducts.json();
+
+  return {
+    props: {
+      properties: result.items,
+    },
+  };
+};

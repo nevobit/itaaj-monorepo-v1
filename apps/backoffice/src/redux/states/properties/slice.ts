@@ -1,7 +1,6 @@
 import { State } from '@/types/redux/State';
 import { createSlice } from '@reduxjs/toolkit';
 import { getProperties, createProperties, deleteProperties, updateProperties } from './thunks';
-import { Property } from '@itaaj/types';
 
 const propertiesSlice = createSlice({
     name: 'properties',
@@ -10,7 +9,7 @@ const propertiesSlice = createSlice({
         loading: false,
         error: undefined,
         success: false,
-    } as State<Property>,
+    } as State<any>,
     reducers: {
         resetProperties: (state) => {
             (state.loading = false), (state.success = false), (state.error = '');

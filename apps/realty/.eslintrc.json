@@ -17,6 +17,9 @@
     }
   ],
   "rules": {
-    "no-unused-vars": [1, { "args": "after-used", "argsIgnorePattern": "^_" }]
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off"
+    
   }
+  
 }

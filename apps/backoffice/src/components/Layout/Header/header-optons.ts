@@ -11,18 +11,18 @@ interface Option {
 }
 
 export const headerOptions: Option[] = [
-    {
-        title: 'Main',
-    },
-    {
-        title: 'Enterprise',
-        items: [
-            {
-                path: '',
-                label: 'Kanban',
-            },
-        ],
-    },
+    // {
+    //     title: 'Main',
+    // },
+    // {
+    //     title: 'Enterprise',
+    //     items: [
+    //         {
+    //             path: '',
+    //             label: 'Kanban',
+    //         },
+    //     ],
+    // },
     {
         title: 'Realty',
         items: [
@@ -32,31 +32,31 @@ export const headerOptions: Option[] = [
             },
         ],
     },
-    {
-        title: 'Invertment',
-        items: [
-            {
-                path: 'Projects',
-                label: 'Projects',
-            },
-        ],
-    },
-    {
-        title: 'Marketing',
-        items: [
-            {
-                path: 'Leads',
-                label: 'Leads',
-            },
-        ],
-    },
-    {
-        title: 'Management',
-        items: [
-            {
-                path: 'Collaborators',
-                label: 'Collaborators',
-            },
-        ],
-    },
+    // {
+    //     title: 'Invertment',
+    //     items: [
+    //         {
+    //             path: 'Projects',
+    //             label: 'Projects',
+    //         },
+    //     ],
+    // },
+    // {
+    //     title: 'Marketing',
+    //     items: [
+    //         {
+    //             path: 'Leads',
+    //             label: 'Leads',
+    //         },
+    //     ],
+    // },
+    // {
+    //     title: 'Management',
+    //     items: [
+    //         {
+    //             path: 'Collaborators',
+    //             label: 'Collaborators',
+    //         },
+    //     ],
+    // },
 ];

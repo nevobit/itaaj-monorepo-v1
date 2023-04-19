@@ -1,5 +1,4 @@
 import styles from './Table.module.css';
-import { Result } from '@itaaj/types';
 import { fromNow } from '@/utilities/date-formater';
 import { ContextMenu } from '@/components';
 import { useState } from 'react';
@@ -9,7 +8,7 @@ interface DataRecord {
     [key: string]: any;
 }
 
-interface Props<T extends DataRecord> extends Partial<Result<T>> {
+interface Props<T extends DataRecord> extends Partial<any> {
     data: T[];
     headers: string[];
     count: number;
