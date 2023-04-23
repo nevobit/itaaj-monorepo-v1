@@ -47,12 +47,12 @@ const Properties:NextPage<{properties: any, count: number}> = ({properties, coun
             <p>Ordenar</p>
           </span>
           <select name="" id="">
-            <option value="">Puntuacion</option>
-            <option value="">Mas recientes</option>
-            <option value="">Mas baratos</option>
-            <option value="">Mas caros</option>
-            <option value="">Mas grandes</option>
-            <option value="">Mas pequenos</option>
+            <option value="score">Puntuacion</option>
+            <option value="recents">Mas recientes</option>
+            <option value="low">Mas baratos</option>
+            <option value="high">Mas caros</option>
+            <option value="big">Mas grandes</option>
+            <option value="small">Mas pequenos</option>
           </select>
         </div>
       </div>
@@ -70,12 +70,7 @@ export default Properties
 
 export const getServerSideProps: any = async () => {
   const res = await fetch(
-    "https://itaaf-api-production.up.railway.app/api/v1/properties", {
-      method: "GET",
-      headers: {
-            "Content-Type": "application/json",
-      }
-    }
+    "https://itaaf-api-production.up.railway.app/api/v1/properties"
   );
 
   const result: any = await res.json();

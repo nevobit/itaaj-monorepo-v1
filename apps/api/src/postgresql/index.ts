@@ -1,17 +1,19 @@
 import { DataSource } from 'typeorm';
 import { PropertySchema } from '../models';
 
+const { HOST, USERNAME, PASSWORD, DATABASE } = process.env;
+
 export const initPostgres = async () => {
  try{
   const AppDataSource = new DataSource({
    type: 'mysql', 
-   host: 'aws.connect.psdb.cloud',
+   host: HOST,
    port: 3306,
-   username: 'tq8ao9e6ykvns8ix8cmh',
-   password: 'pscale_pw_9CN0h5j1kllbF4CKxUVfVgl0Kz73kvhBC6flzgNAGpl',
-   database: 'itaaf-database',
+   username: USERNAME,
+   password: PASSWORD,
+   database: DATABASE,
    entities: [PropertySchema],
-   synchronize: true,
+   // synchronize: true,
    // dropSchema: true,
    ssl: {
     rejectUnauthorized: true

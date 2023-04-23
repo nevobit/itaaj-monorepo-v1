@@ -1,5 +1,5 @@
 .banner{
-  height: 70vh;   
+  /* height: 100%;    */
   background: linear-gradient(rgba(238, 240, 249, 0) 0%, rgb(238, 240, 249) 100%);
 }
 
@@ -12,7 +12,7 @@
 .search_container{
   position: relative;
   background-color: #0C0F24;  
-  height: 12rem;
+  height: auto;
   width: min(1000px, 90%);
   margin: 0 auto;
   margin-top: -7rem;
@@ -66,12 +66,15 @@
   display: inline-block;
   border-radius: .5rem;
   text-align: center;
-  padding: 1rem 2rem;
+  padding-inline:  2rem;
   color: var(--primary-color);
   font-weight: 600;
-  height: 2rem;
   cursor: pointer;
   transition: .2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
 }
 
 .properties_section .header a:hover{
@@ -193,4 +196,232 @@
   font-size: 2.5rem;
   margin-bottom: 4rem;
   text-align: center;
+}
+
+.property{
+  cursor: pointer;
+}
+
+
+.options{
+  width: min(1200px, 90%);
+  margin-inline: auto;
+  padding: 2rem;
+}
+
+.options h2{
+  font-size: 2rem;
+  color: rgba(0, 0, 0, .8);
+}
+
+.options .boxs{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.options .boxs .box{
+  background-color: #fff;
+  /* height: 7.5rem; */
+  /* width: 30rem; */
+  border-radius: .5rem;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
+}
+
+.box h3{
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, .8);
+}
+
+.copy{
+  max-width: 50rem;
+  font-size: 1.4rem;
+  color: rgba(0, 0, 0, .8);
+  margin-top: .5rem;
+}
+
+.container_banner{
+  background: #999 no-repeat top/cover;
+  background-image: url('/banner.webp');
+  height: 48rem;
+  min-height: 48rem;
+  position: relative;
+}
+
+.search_options{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+
+.search_options button{
+  background: transparent;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.6rem;
+  border-bottom: 2px solid transparent;
+  padding-bottom: .5rem;
+}
+
+.search_options .active{
+  border-bottom:2px solid rgba(255, 255, 255, .8);
+}
+
+.not_found{
+  width: min(1000px, 90%);
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ align-items: center;
+ justify-content: center;
+}
+
+.not_found h2{
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, .8);
+}
+
+.not_found span{
+  color: rgba(0, 0, 0, .6);
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  display: inline-block;
+}
+
+.not_found p{
+  color: rgba(0, 0, 0, .8);
+  font-weight: 300;
+  margin-bottom: 3rem;
+  max-width: 40rem;
+}
+
+.not_found a{
+  border: 1px solid var(--primary-color);
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  color: var(--primary-color);
+}
+
+.questions{
+  padding-block: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.questions .image{
+  height: 40rem;
+}
+
+.questions h2{
+  color: rgba(0, 0, 0, .8);
+}
+
+.questions p{
+  color: rgba(0, 0, 0, .8);
+  max-width: 50rem;
+  margin-block: 2rem;
+  font-size: 1.4rem;
+}
+
+.questions a{
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: .5rem;
+  width: 30rem;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 8px #15a0b85f;
+}
+@media screen and (max-width: 768px){
+  
+  .container_banner{
+    height: 21rem;
+    min-height: 21rem;
+    position: relative;
+  }
+  
+  .search_container{
+    position: relative;
+    background-color: #0C0F24;  
+    height: auto;
+    width: min(1000px, 90%);
+    margin: 0 auto;
+    margin-top: -7rem;
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+  
+  .search_container .search{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
+  .search_container .search select{
+    height: 5rem;
+  }
+  
+  .vision_box{
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 245px;    
+  }
+  
+  .properties_section .header {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 1.4rem;
+    width: 100%;
+  }
+  
+  
+  .properties_section .header a{
+    height: 4.5rem;
+    width: 100%;
+  }
+  
+  .not_found{
+    width: min(1000px, 90%);
+   display: flex;
+   flex-direction: column-reverse;
+   height: 80vh;
+  }
+  
+  .not_found a{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .questions{
+    padding-block: 0;
+    flex-direction: column-reverse;
+    gap: 2rem;
+    padding-bottom: 4rem;
+  }
+  
+  .questions h2{
+    text-align: center;
+  }
+  .questions p{
+    text-align: center;
+  }
+  
+  .questions > div:last-child{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  } 
 }

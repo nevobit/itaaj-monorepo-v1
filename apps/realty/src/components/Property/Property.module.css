@@ -44,7 +44,8 @@
 .amenities{
  padding: .5rem 1rem;
  display: grid;
- grid-template-columns: repeat(4, 1fr);
+ grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+gap: 1rem;
 }
 
 .amenities > div{
@@ -109,17 +110,31 @@
  margin-bottom: 1rem;
 }
 
-.description p {
+.description > p:first-child  {
  font-size: 1.4rem;
  white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; 
-    width: 50rem;
+    width: 40rem;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     display: -webkit-box;
     white-space: normal;
     width: 95%;
     color: rgba(0, 0, 0, .8);
-    
+}
+
+@media screen and (max-width: 768px){
+    .card{
+        grid-template-columns: 1fr;
+        grid-template-rows: 300px 1fr;
+        height: 59rem;
+        /* overflow: visible; */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .03);
+        border-bottom: 1px solid rgba(0, 0, 0, .3);
+       } 
+       
+       .options{
+        margin-top: 2rem;
+       }
 }

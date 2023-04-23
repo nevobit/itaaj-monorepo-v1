@@ -12,7 +12,7 @@ const language:any = {
 }
 
 const Header = () => {
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
   
   const {push, pathname, locales, asPath} = useRouter();
   
@@ -20,6 +20,7 @@ const Header = () => {
     const locale = e.target.value;
     push(pathname, asPath, { locale });
   }
+  
   
   return (
     <header className={styles.header}>
@@ -30,18 +31,18 @@ const Header = () => {
         <h2>Itaaj</h2>      
       </div>
       <Link href="/">{t('common:buy')}</Link>
-       <Link href="/">{t('common:sell')}</Link>
-       <Link href="/">{t('common:contact')}</Link>
-       <Link href="/">{t('common:blog')}</Link>
+       <Link href="/sell">{t('common:sell')}</Link>
+       <Link href="/contact">{t('common:contact')}</Link>
+       <Link href="/blog">{t('common:blog')}</Link>
       </nav>
       <div className={styles.options}>
 
-       <select onChange={changeLanguage} >
+       <select value={lang} onChange={changeLanguage} >
         {locales?.map((locale) => (
           <option key={locale} value={locale}>{language[locale.toString()]}</option>        
         ))}
        </select>
-       <Link href="/">Contactanos</Link>
+       <Link href="/">{t('common:contact')}</Link>
 
       </div>
     </header>

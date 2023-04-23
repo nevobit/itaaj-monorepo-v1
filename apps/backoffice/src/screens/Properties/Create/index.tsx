@@ -42,14 +42,31 @@ const CreatePropety: React.FC = () => {
     uploadImage(e?.target?.files![0]);
 };
 
-  console.log(property)
+  const [amenities, setAmenities] = useState<any[]>([]);
+  const addAmenities = () => {
+    const amenity = {
+      id: Date.now().toString(),
+      text: ''
+    }
+    
+    setAmenities([...amenities, amenity])
+  }
 
+  const handleText = (e:any, id:string) => {
+    e.preventDefault();
+    const index = amenities.findIndex((a:any) => a.id == id)
+    amenities[index].text = e.target.value;
+  }
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const onSubmit = (e: any) => {
     e.preventDefault();
-    dispatch(createProperties({...property, images: urls}) as any)
+    const newAmenities: string[] = []
+    amenities.map(amenity => {
+      newAmenities.push(amenity.text)
+    })
+    dispatch(createProperties({...property, images: urls, amenities: newAmenities}) as any)
     navigate(`/${PrivateRoutes.PROPERTIES}`, {replace: true})
   };
 
@@ -149,6 +166,20 @@ const CreatePropety: React.FC = () => {
         <Field label="Kitchen">
           <Input name="kitchen" onChange={handleChange} />
         </Field>
+        
+        <Field label="Amenities">
+          
+        {amenities.map((amenity) => (
+          <div style={{
+            marginBottom: 10
+          }}>
+          <Input onChange={(e) => handleText(e, amenity.id)} />
+          </div>
+
+        ))}
+        <button onClick={addAmenities}>Add Amenity</button>
+        </Field>
+        
       </div>
       <div className={styles.sidebar}>
         <div className={styles.section}>
@@ -190,7 +221,7 @@ const CreatePropety: React.FC = () => {
             <select name="category" onChange={handleChange}>
               <option value="general">General</option>
               <option value="exclusive">Exclusive</option>
-              
+              <option value="investment">Investment</option>
             </select>
           </Field>
         </div>

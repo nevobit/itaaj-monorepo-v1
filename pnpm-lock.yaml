@@ -129,9 +129,12 @@ importers:
       react-dom:
         specifier: 18.1.0
         version: 18.1.0(react@18.1.0)
+      swiper:
+        specifier: ^9.2.3
+        version: 9.2.3
       ui:
         specifier: '*'
-        version: link:../../packages/ui
+        version: 0.2.4
     devDependencies:
       '@babel/core':
         specifier: 7.18.10
@@ -15020,6 +15023,10 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
+  /ssr-window@4.0.2:
+    resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+    dev: false
+
   /ssri@6.0.2:
     resolution: {integrity: sha512-cepbSq/neFK7xB6A50KHN0xHDotYzq58wWCa5LeWqnPrHG8GzfEjO/4O8kpmcGW+oaxkvhEJCWgbgNk4/ZV93Q==}
     dependencies:
@@ -15092,6 +15099,10 @@ packages:
   /statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+
+  /std@0.1.40:
+    resolution: {integrity: sha512-wUf57hkDGCoVShrhPA8Q7lAg2Qosk+FaMlECmAsr1A4/rL2NRXFHQGBcgMUFKVkPEemJFW9gzjCQisRty14ohg==}
+    dev: false
 
   /steno@0.4.4:
     resolution: {integrity: sha512-EEHMVYHNXFHfGtgjNITnka0aHhiAlo93F7z2/Pwd+g0teG9CnM3JIINM7hVVB5/rhw9voufD7Wukwgtw2uqh6w==}
@@ -15362,6 +15373,13 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /swiper@9.2.3:
+    resolution: {integrity: sha512-hxqcjIsYPP1fv+KIXPqGywl6ik8RBp0y0i9+TOIh55ca6SpZ5FrgNJ4QXPhsl6mlSBMEYPmh5zOKtZpI8zpWeQ==}
+    engines: {node: '>= 4.7.0'}
+    dependencies:
+      ssr-window: 4.0.2
+    dev: false
 
   /symbol.prototype.description@1.0.5:
     resolution: {integrity: sha512-x738iXRYsrAt9WBhRCVG5BtIC3B7CUkFwbHW2zOvGtwM33s7JjrCDyq8V0zgMYVb5ymsL8+qkzzpANH63CPQaQ==}
@@ -16167,6 +16185,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /ui@0.2.4:
+    resolution: {integrity: sha512-se2D+frb/i6JwFc7j72IEa0JADF8lfgc6ivOigaYkXHOuZRBtWe8R7UZ2YiXcbJ1dYNsjq40dn39rlNRxmVdPw==}
+    dependencies:
+      std: 0.1.40
+    dev: false
 
   /unbox-primitive@1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}

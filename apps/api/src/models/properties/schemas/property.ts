@@ -11,6 +11,7 @@ export enum PropertyType {
 export enum Category {
  EXCLUSIVE= 'exclusive',
  GENERAL= 'general',
+ INVESTMENT= 'investment',
 }
 
 export interface Location {
