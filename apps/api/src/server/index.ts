@@ -6,7 +6,7 @@ import { registerRoutes } from "../routes";
 import jsonServer from "json-server";
 import { initPostgres } from "../postgresql";
 
-const { PORT, HOST, NODE_ENV } = process.env;
+const { PORT, HOST } = process.env;
 const corsOptions = {
   origin: "*",
 };

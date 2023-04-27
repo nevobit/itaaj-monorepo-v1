@@ -30,8 +30,12 @@ export const headerOptions: Option[] = [
                 path: PrivateRoutes.PROPERTIES,
                 label: 'Properties',
             },
+            {
+                path: PrivateRoutes.POSTS,
+                label: 'Posts',
+            },
         ],
-    },
+    }
     // {
     //     title: 'Invertment',
     //     items: [

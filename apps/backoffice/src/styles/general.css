@@ -40,3 +40,20 @@
 .auto_page .ql-editor{
  min-height: 50rem !important;
 }
+
+
+.grid_page{
+ display: grid;
+ grid-template-columns: 400px 1fr;
+ gap: 2rem;
+ min-height: 80vh;
+}
+
+.screen{
+ padding: 2rem 4rem;
+}
+
+.screen-100{
+ max-width: 1400px;
+ margin: 0 auto;
+}

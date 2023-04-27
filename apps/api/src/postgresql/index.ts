@@ -1,20 +1,20 @@
 import { DataSource } from 'typeorm';
-import { PropertySchema } from '../models';
+import { PostSchema, PropertySchema } from '../models';
 
-const { HOST, USERNAME, PASSWORD, DATABASE } = process.env;
+const { HOST_MYSQL, USERNAME_MYSQL, PASSWORD, DATABASE } = process.env;
 
 export const initPostgres = async () => {
  try{
   const AppDataSource = new DataSource({
    type: 'mysql', 
-   host: HOST,
+   host: HOST_MYSQL,
    port: 3306,
-   username: USERNAME,
+   username: USERNAME_MYSQL,
    password: PASSWORD,
    database: DATABASE,
-   entities: [PropertySchema],
-   // synchronize: true,
-   // dropSchema: true,
+   entities: [PropertySchema, PostSchema],
+   synchronize: true,
+   dropSchema: true,
    ssl: {
     rejectUnauthorized: true
    }

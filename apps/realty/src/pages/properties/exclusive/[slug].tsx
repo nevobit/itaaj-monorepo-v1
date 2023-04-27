@@ -51,12 +51,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
         <div className={styles.title}>
           <h2>CONOCE TU PROXIMO DEPARTAMENTO EN RIO EBREO 33</h2>
           <p>
-            La calle de Río Ebro se localiza muy cerca de la Avenida Reforma,
-            una de las más importantes en la Ciudad. En distintas fechas durante
-            el año, se realizan varios eventos, éstos usualmente se localizaban
-            desde la glorita de la Diana Cazadora hasta la glorieta del Ángel de
-            la Independencia. Este corredor también es utilizado montar
-            exposiciones fotográficas, arte, escultura, entre otras.
+            {property.description}
           </p>
         </div>
         <div className={styles.info}>
@@ -66,7 +61,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
 
           <span>LOCALIZADO EN</span>
           <p>{property.city}</p>
-          <p>RIO EBRO 33</p>
+          <p>{property.country}</p>
           <button>CONTACTO</button>
         </div>
       </div>

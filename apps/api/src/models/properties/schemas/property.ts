@@ -1,4 +1,4 @@
-import { Base, StatusType } from "../../../common";
+import { Base } from "../../../common";
 
 export enum PropertyType {
  HOUSE= 'house',
