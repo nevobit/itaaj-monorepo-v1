@@ -1,5 +1,5 @@
 export const PublicRoutes = {
-
+    SIGNIN: 'signin',
 }
 
 export const PrivateRoutes = {

@@ -2,7 +2,6 @@ import Layout from '@/components/Layout'
 import SEO from '@/components/seo/seo'
 import React from 'react'
 import styles from './Post.module.css'
-import Property from '@/components/Property'
 import { NextPage } from 'next'
 
 const Blog:NextPage<{posts: any, count: number}> = ({posts, count}) => {
@@ -56,9 +55,9 @@ const Blog:NextPage<{posts: any, count: number}> = ({posts, count}) => {
           </select>
         </div>
       </div>
-      {posts?.map((property:any) => (
-       <div>
-        <h2>{property.title}</h2>
+      {posts?.map((post:any) => (
+       <div key={post.uuid}>
+        <h2>{post.title}</h2>
        </div>
        // <Property key={property.uuid} {...property} />      
       ))}

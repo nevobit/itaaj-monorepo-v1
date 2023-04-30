@@ -15,7 +15,7 @@ export class PropertySchema extends BaseEntity {
  @Column({ default: '' })
  name!: string;
 
- @Column({ default: '' })
+ @Column({ type: 'text', default: ''  })
  description!: string;
 
  @Column({ default: '' })
@@ -63,7 +63,7 @@ export class PropertySchema extends BaseEntity {
  @Column({ default: 0 })
  bedrooms!: number;
 
- @Column({ default: 0 })
+ @Column({ type: 'float', default: 0 })
  bathrooms!: number;
 
  @Column({ default: '' })

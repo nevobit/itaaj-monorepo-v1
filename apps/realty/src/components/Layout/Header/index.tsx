@@ -26,12 +26,16 @@ const Header = () => {
     <header className={styles.header}>
       
       <nav className={styles.nav}>
-        <div className={styles.logo}>
+        <Link href='/'>
+          <a className={styles.logo}>
+            
         <Image src="/img/logos/isotipo.png" width={20} height={40} alt='Itaaj logo' />
         <h2>Itaaj</h2>      
-      </div>
+        </a>
+      </Link>
       <Link href="/">{t('common:buy')}</Link>
        <Link href="/sell">{t('common:sell')}</Link>
+       <Link href="/deals">{t('common:projects')}</Link>
        <Link href="/contact">{t('common:contact')}</Link>
        <Link href="/blog">{t('common:blog')}</Link>
       </nav>

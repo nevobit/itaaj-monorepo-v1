@@ -14,13 +14,12 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
     <Layout>
       <SEO title="Inicio" />
       <div className={styles.banner}>
-        <div className={styles.container_banner}>
-        </div>
+        <div className={styles.container_banner}></div>
         <div className={styles.search_container}>
           <h2>Todos tenemos un sitio</h2>
           <div className={styles.search_options}>
-            <button className={styles.active} >Comprar</button>
-            <button >Obra nueva</button>
+            <button className={styles.active}>Comprar</button>
+            <button>Obra nueva</button>
           </div>
           <div className={styles.search}>
             <select name="" id="">
@@ -64,7 +63,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                 alt="Invierte"
               />
 
-              <h3>Invierte</h3>
+              <h3>Portafolio de desarrolladores</h3>
             </div>
             <div className={styles.box}>
               <Image
@@ -115,7 +114,8 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                       {DivisaFormater({ value: property.price })}
                     </span>
                     <p className={styles.title}>
-                      <strong>{property.type}</strong> en {property.city}{' '}
+                      <strong>{property.type}</strong> en {property.city}
+                      {', '} <strong>{property.name}</strong>
                     </p>
                     <ul className={styles.list}>
                       <li>{property.bedrooms} habs</li>
@@ -160,33 +160,31 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                 className={styles.property}
               >
                 <a>
-                  
-                <div className={styles.image}>
-                  <Image
-                    src={property.images[0]}
-                    width={500}
-                    height={350}
-                    alt={property.name || 'Image'}
-                    objectFit="cover"
-                  />
-                </div>
-                <div className={styles.property_content}>
-                  <span className={styles.price}>
-                    {DivisaFormater({ value: property.price })}
-                  </span>
-                  <p className={styles.title}>
-                    <strong>{property.type}</strong> en {property.city}{' '}
-                  </p>
-                  <ul className={styles.list}>
-                    <li>{property.bedrooms} habs</li>
-                    &middot;
-                    <li>{property.bathrooms} baños</li>
-                    &middot;
-                    <li>{property.area.total_area} m&sup2;</li>
-                  </ul>
-                </div>
+                  <div className={styles.image}>
+                    <Image
+                      src={property.images[0]}
+                      width={500}
+                      height={350}
+                      alt={property.name || 'Image'}
+                      objectFit="cover"
+                    />
+                  </div>
+                  <div className={styles.property_content}>
+                    <span className={styles.price}>
+                      {DivisaFormater({ value: property.price })}
+                    </span>
+                    <p className={styles.title}>
+                      <strong>{property.type}</strong> en {property.city}
+                    </p>
+                    <ul className={styles.list}>
+                      <li>{property.bedrooms} habs</li>
+                      &middot;
+                      <li>{property.bathrooms} baños</li>
+                      &middot;
+                      <li>{property.area.total_area} m&sup2;</li>
+                    </ul>
+                  </div>
                 </a>
-                
               </Link>
             ))}
         </div>
@@ -221,7 +219,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
           <Image
             src="/img/track.png"
             width={1200}
-            height={250}
+            height={200}
             objectFit="contain"
             alt="Image"
           />
@@ -229,15 +227,23 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
       </section>
       <section className={styles.questions}>
         <div className={styles.image}>
-          
-        <Image src='/agent.jpg' width={300} height={400} alt='Agente Itaaj' objectFit='cover' />
+          <Image
+            src="/agent.jpg"
+            width={300}
+            height={400}
+            alt="Agente Itaaj"
+            objectFit="contain"
+          />
         </div>
         <div>
           <h2>¿Aún tienes dudas?</h2>
-          <p>Contáctanos a través de nuestro WhatsApp y recibe ayuda de
-nuestros asesores.</p>
-        <Link href={whatsappLink}><a> Habla con un agente</a></Link>
-            
+          <p>
+            Contáctanos a través de nuestro WhatsApp y recibe ayuda de nuestros
+            asesores.
+          </p>
+          <Link href={whatsappLink}>
+            <a> Habla con un agente</a>
+          </Link>
         </div>
       </section>
     </Layout>

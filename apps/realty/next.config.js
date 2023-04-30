@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   ...nextTranslate(),
     images: {
-    domains: ['res.cloudinary.com', 'ui-avatars.com'],
+    domains: ['res.cloudinary.com', 'ui-avatars.com', 'i.ibb.co'],
   },
 };
 

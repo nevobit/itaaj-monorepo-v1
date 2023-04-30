@@ -18,18 +18,18 @@ const Property: NextPage<{property: any}> = ({property}) => {
       </div>
       <div className={styles.images}>
        <div className={styles.photo1}>
-        <Image src={property.images[0]}   width={800} height={450} objectFit='cover' />        
+        <Image src={property.images[0]}   width={800} height={800} objectFit='cover' />        
        </div>
-       <Image src={property.images[1]}  width={500} height={400} />
+       <Image src={property.images[1]}  width={500} height={500} />
        { property.images[2] && (
-          <Image src={property.images[2]}  width={500} height={400} />        
+          <Image src={property.images[2]}  width={500} height={500} />        
        )}
        {property.images[3] && (
-       <Image src={property.images[3]}  width={500} height={400} />
+       <Image src={property.images[3]}  width={500} height={500} />
         
        )}
        {property.images[4] && (
-       <Image src={property.images[4]}  width={500} height={400} />        
+       <Image src={property.images[4]}  width={500} height={500} />        
        )}
        
       </div>

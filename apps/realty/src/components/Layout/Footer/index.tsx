@@ -57,7 +57,7 @@ const Footer = () => {
             <li className={styles.title}>Links Rapidos</li>
             <li>Aseosres Externos</li>
             <li>Blog</li>
-            <li>Invierte</li>
+            <li>Portafolio de desarrolladores</li>
           </ul>
           <ul>
             <li className={styles.title}>Contactatnos</li>

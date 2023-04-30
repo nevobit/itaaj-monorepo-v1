@@ -33,7 +33,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
       <div className={styles.banner}>
         <div className={styles.info_banner}>
           <h2>
-            {property.type} en venta en {property.city}
+            {property.name}
           </h2>
           <p>
             {property.type} de {property.area.total_area} m&sup2;
@@ -44,15 +44,13 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
           alt={property.name}
           width={1920}
           height={1200}
-          objectFit="cover"
+          objectFit="contain"
         />
       </div>
       <div className={styles.header}>
         <div className={styles.title}>
-          <h2>CONOCE TU PROXIMO DEPARTAMENTO EN RIO EBREO 33</h2>
-          <p>
-            {property.description}
-          </p>
+          <h2>CONOCE TU PROXIMO {property.type.toString().toUpperCase()} EN {property.city.toString().toUpperCase()}</h2>
+       <p dangerouslySetInnerHTML={{ __html: property.description }}></p>          
         </div>
         <div className={styles.info}>
           <div className={styles.image}></div>
@@ -60,7 +58,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
           <p>{property.bathrooms} - BAÑOS </p>
 
           <span>LOCALIZADO EN</span>
-          <p>{property.city}</p>
+          <p>{property.city}, {property.state}</p>
           <p>{property.country}</p>
           <button>CONTACTO</button>
         </div>
@@ -83,7 +81,10 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
           <ul>
             <li>{property.type} de {property.area.total_area} m&sup2;</li>
             <li>{property.bedrooms} recamaras</li>
-            <li>{property.bathrooms} banos</li>
+            <li>{property.bathrooms} baños</li>
+            {property.amenities?.map((amenity: string) => (
+            <li key={amenity}>{amenity}</li>
+            ) )}
           </ul>
          </div>
       </div>
