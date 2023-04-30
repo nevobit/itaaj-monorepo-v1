@@ -3,11 +3,9 @@ import { fromNow } from '@/utilities/date-formater';
 import { ContextMenu } from '@/components';
 import { useState } from 'react';
 import { DivisaFormater } from '@/utilities/divisa-formater';
-
 interface DataRecord {
     [key: string]: any;
 }
-
 interface Props<T extends DataRecord> extends Partial<any> {
     data: T[];
     headers: string[];
