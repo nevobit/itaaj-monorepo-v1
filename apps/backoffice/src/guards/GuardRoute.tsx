@@ -9,7 +9,7 @@ const GuardRoute = () => {
 
   return (
     <div>
-        {userInfo? <Outlet /> : <Navigate replace to={PublicRoutes} />}
+        {userInfo? <Outlet /> : <Navigate replace to={PublicRoutes.SIGNIN} />}
     </div>
   )
 }

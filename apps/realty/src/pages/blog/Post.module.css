@@ -1,0 +1,28 @@
+.header{
+ width: min(1000px, 90%);
+ margin-inline: auto;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ height: 5rem;
+ font-size: 1.4rem;
+}
+
+.title{
+ margin-inline: auto;
+ text-align: center;
+ max-width: 50rem;
+ margin-block: 2rem;
+ font-weight: 600;
+ font-size: 3.5rem;
+}
+
+.posts{
+ width: 90%;
+ margin-inline: auto;
+ display: grid;
+ gap: 4rem;
+ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+ padding-block: 2rem;
+}
+

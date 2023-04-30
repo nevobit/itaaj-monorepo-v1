@@ -3,85 +3,95 @@ import SEO from '@/components/seo/seo'
 import React from 'react'
 import styles from './Post.module.css'
 import { NextPage } from 'next'
+import Link from 'next/link'
+import PostCard from '@/components/PostCard'
 
 const Blog:NextPage<{posts: any, count: number}> = ({posts, count}) => {
   return (
     <Layout>
      <SEO title='Blog' />
       <div className={styles.header}>
-       <h2>Filtros</h2>
-       <select name="" id="">
-        <option value="">Provincia</option>        
-       </select>
-       <select name="" id="">
-        <option value="">Tipo de vivienda</option>        
-       </select>
-       <select name="" id="">
-        <option value="">Tipo de construccion</option>        
-       </select>
-       <select name="" id="">
-        <option value="">Precio</option>        
-       </select>
-       <select name="" id="">
-        <option value="">Habitaciones</option>        
-       </select>
-       <select name="" id="">
-        <option value="">Banos</option>        
-       </select>
+        <Link href='/'>
+          Inicio
+        </Link>
+        <Link href='/'>
+          Consejos de vivienda
+        </Link>
+        <Link href='/'>
+        Guia de credito
+        </Link>
+        <Link href='/'>
+        Tips Financieros
+        </Link>
+        <Link href='/'>
+        Zonas
+        </Link>
+        <Link href='/'>
+        Lifestyle
+        </Link>
+        <Link href='/'>
+        Tendencias
+        </Link>
+        <Link href='/'>
+        Blockchain
+        </Link>
       </div>
-     {count == 0? (
+      <h1 className={styles.title}>Tips, guias y consejos para comprar vivienda</h1>
+      
+      <div className={styles.posts}>
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        <PostCard />
+        
+        
+      </div>
+      
+      
+     
+     {/* {count == 0? (
       <div className={styles.notProperties}>
         <div><i className='bx bx-shape-circle'></i></div>
         <h2>No hay Posts</h2>
         </div>
      ): (
       
-      <div className={styles.properties}>
-      <div>
-        <h2 className={styles.title}>Viviendas y casas en venta en Mexico</h2>
-        <p>14.556 usadas y 3.194 de obra nueva</p>
-        <div className={styles.option}>
-          <span>
-          <i className='bx bx-info-circle'></i>
-            <p>Ordenar</p>
-          </span>
-          <select name="" id="">
-            <option value="score">Puntuacion</option>
-            <option value="recents">Mas recientes</option>
-            <option value="low">Mas baratos</option>
-            <option value="high">Mas caros</option>
-            <option value="big">Mas grandes</option>
-            <option value="small">Mas pequenos</option>
-          </select>
-        </div>
-      </div>
+      <div className={styles.posts}>
+    
       {posts?.map((post:any) => (
-       <div key={post.uuid}>
-        <h2>{post.title}</h2>
-       </div>
+       <PostCard />
        // <Property key={property.uuid} {...property} />      
       ))}
       </div>
      )}
-      
+       */}
     </Layout>
   )
 }
 
 export default Blog
 
-export const getServerSideProps: any = async () => {
-  const res = await fetch(
-    "http://localhost:8000/api/v1/posts"
-  );
+  export const getServerSideProps: any = async () => {
+    const res = await fetch(
+      "http://localhost:8000/api/v1/posts"
+    );
 
-  const result: any = await res.json();
-  // const resultsProducts: GetComputersResults = await resProducts.json();
+    const result: any = await res.json();
+    // const resultsProducts: GetComputersResults = await resProducts.json();
 
-  return {
-    props: {
-     posts: result.items,
-      count: result.count
-    },
+    return {
+      props: {
+      posts: result.items,
+        count: result.count
+      },
+    };
   };
-};
