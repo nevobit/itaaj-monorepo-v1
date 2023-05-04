@@ -2,6 +2,8 @@ import DropdownMenu from '@/components/Shared/DropdownMenu';
 import React from 'react';
 import { headerOptions } from './header-optons';
 import styles from './Header.module.css';
+import { Link } from 'react-router-dom';
+import { PrivateRoutes } from '@/constant-definitions';
 
 const Header = () => {
     const user = {
@@ -19,6 +21,9 @@ const Header = () => {
                     <img src="/img/logo/isotipo.png" />
                 </div>
                 <nav className={styles.nav}>
+                    <Link to={PrivateRoutes.HOME}>
+                        Home
+                    </Link>
                     {headerOptions.map((option) => (
                         <DropdownMenu 
                             key={option.title}
