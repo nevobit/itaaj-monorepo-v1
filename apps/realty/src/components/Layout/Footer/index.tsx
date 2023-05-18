@@ -28,10 +28,10 @@ const Footer = () => {
           <h2 className={styles.copy}>
           </h2>
           <div className={styles.networks}>
-            <Link href="/">
+            <Link href="https://instagram.com/itaaj.mx?igshid=YmMyMTA2M2Y=">
               <i className="bx bxl-instagram"></i>
             </Link>
-            <Link href="/">
+            <Link href="https://www.facebook.com/itaajrealty">
               <i className="bx bxl-facebook"></i>
             </Link>
             <Link href="/">
@@ -55,15 +55,15 @@ const Footer = () => {
           </ul>
           <ul>
             <li className={styles.title}>Links Rapidos</li>
-            <li>Aseosres Externos</li>
+            <li>Asesores Externos</li>
             <li>Blog</li>
             <li>Portafolio de desarrolladores</li>
           </ul>
           <ul>
-            <li className={styles.title}>Contactatnos</li>
+            <li className={styles.title}>Contactanos</li>
             <li>Rio Panuco 91. Int 22 Colonia Cuauhtémoc Ciudad de México</li>
             <li>+52 1 999 547 1508</li>
-            <li>contacto@itaaj.com</li>
+            <li>contacto@itaaj.com.mx</li>
           </ul>
         </div>
         

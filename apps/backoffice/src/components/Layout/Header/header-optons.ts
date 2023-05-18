@@ -12,9 +12,6 @@ interface Option {
 
 export const headerOptions: Option[] = [
     // {
-    //     title: 'Main',
-    // },
-    // {
     //     title: 'Enterprise',
     //     items: [
     //         {
@@ -37,7 +34,7 @@ export const headerOptions: Option[] = [
         ],
     }
     // {
-    //     title: 'Invertment',
+    //     title: 'Investment',
     //     items: [
     //         {
     //             path: 'Projects',

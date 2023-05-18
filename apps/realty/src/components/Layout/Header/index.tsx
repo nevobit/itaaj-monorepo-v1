@@ -36,7 +36,6 @@ const Header = () => {
       <Link href="/">{t('common:buy')}</Link>
        <Link href="/sell">{t('common:sell')}</Link>
        <Link href="/deals">{t('common:projects')}</Link>
-       <Link href="/contact">{t('common:contact')}</Link>
        <Link href="/blog">{t('common:blog')}</Link>
       </nav>
       <div className={styles.options}>

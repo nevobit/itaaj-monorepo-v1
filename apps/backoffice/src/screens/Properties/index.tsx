@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Field, Input, Loader } from "@/components";
+import { Button, Field, Input, Layout, Loader } from "@/components";
 import Breadcrumbs from "@/components/Shared/Breadcumbs";
 import HeaderPage from "@/container/HeaderPage";
 import Table from "@/container/Table";
@@ -12,7 +12,7 @@ import EmptyTable from '@/container/EmptyTable';
 const Properties = () => {
   const [search, setSearch] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [limit, setLimit] = useState<number>(5000);
+  const [limit, setLimit] = useState<number>(5);
   const [page, setPage] = useState<number>(1);
   
   const { loading, result, success } = useSelector((state: AppStore) => state.properties);
@@ -31,13 +31,13 @@ const Properties = () => {
   }, [dispatch, success, limit, page, search]);
   
   return (
-    <div>
+    <Layout>
       <HeaderPage title="Properties">
         <Breadcrumbs items={["Realty", "Properties"]} />
       </HeaderPage>
       <div className={styles.header_page}>
         <Field>
-          <Input type="Search" placeholder="Search properties" onChange={({ target }) => setSearch(target.value)} />
+          <Input type="search" placeholder="Search properties" onChange={({ target }) => setSearch(target.value)} />
         </Field>
         <Link to="/properties/create">Add Property</Link>
       </div>
@@ -64,7 +64,7 @@ const Properties = () => {
       )}
 
       
-    </div>
+    </Layout>
   );
 };
 

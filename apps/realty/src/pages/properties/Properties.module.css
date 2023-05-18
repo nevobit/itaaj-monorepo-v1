@@ -178,6 +178,7 @@
  font-weight: 600;
  font-size: 1.4rem;
  margin-top: 1rem;
+ background-color: transparent;
 }
 
 .price_sug i{
@@ -353,4 +354,12 @@
   font-size: 1.6rem;
  }
  
+}
+
+.properties_list{
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+ gap: 2rem;
+ margin-top: 2rem;
+ margin-bottom: 4rem;
 }

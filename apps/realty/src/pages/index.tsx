@@ -6,8 +6,12 @@ import styles from '../styles/Home.module.css';
 import { DivisaFormater } from '@/types/divisa-formater';
 // import properties from '@/_mock_/properties';
 import Link from 'next/link';
+import { MessageSquare } from 'react-feather';
+import useTranslation from 'next-translate/useTranslation';
 
 const Home: NextPage<{ properties: any }> = ({ properties }) => {
+  const { t } = useTranslation();
+  
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
 
   return (
@@ -33,7 +37,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
         </div>
 
         <div className={styles.options}>
-          <h2>Te acompanamos en todo el proceso</h2>
+          <h2>Te acompañamos en todo el proceso</h2>
           <div className={styles.boxs}>
             <Link href="/blockchain">
               <a className={styles.box}>
@@ -41,10 +45,22 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                   src="/blockchain.png"
                   width={48}
                   height={48}
-                  alt="TecnologiaBlockchain"
+                  alt="Tecnologia Blockchain"
                 />
                 <h3>Tecnologia Blockchain</h3>
               </a>
+            </Link>
+            <Link href='/deals'>
+            <a className={styles.box}>
+              <Image
+                src="/investment.png"
+                width={48}
+                height={48}
+                alt="Invierte"
+              />
+
+              <h3>Portafolio de desarrolladores</h3>
+            </a>
             </Link>
             <div className={styles.box}>
               <Image
@@ -55,16 +71,8 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
               />
               <h3>Valora tu casa</h3>
             </div>
-            <div className={styles.box}>
-              <Image
-                src="/investment.png"
-                width={48}
-                height={48}
-                alt="Invierte"
-              />
-
-              <h3>Portafolio de desarrolladores</h3>
-            </div>
+          
+            
             <div className={styles.box}>
               <Image
                 src="/guarantee.png"
@@ -82,7 +90,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
       <section className={styles.properties_section}>
         <div className={styles.header}>
           <div>
-            <h2>Propidades Exclusivas</h2>
+            <h2>{t('common:exclusive_properties')}</h2>
             <p className={styles.copy}>
               Proyectos revisados detalladamente con el fin de asegurarnos que
               tengan viabilidad financiera, legal y técnica.
@@ -208,6 +216,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
               width={1000}
               height={700}
               objectFit="cover"
+              alt='Descubre mas sobre Itaaj'
             />
           </div>
         </div>

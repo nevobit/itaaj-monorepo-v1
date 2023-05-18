@@ -101,6 +101,11 @@ section{
   margin-inline: auto;
 }
 
+input:read-only{
+  background-color: rgba(0, 0, 0, .1);
+  cursor: not-allowed;
+}
+
 @media (prefers-reduced-motion: reduce){
   html:focus-within {
       scroll-behavior: auto;

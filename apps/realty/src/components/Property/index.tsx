@@ -31,7 +31,7 @@ const Property = ({images, price, type, name, category, bedrooms, bathrooms, are
         </div>
         <div>
         <i className='bx bx-bath' ></i>
-        <p>{bathrooms} banos</p>
+        <p>{bathrooms} baños</p>
         </div>
         <div>
         <i className='bx bx-area' ></i>

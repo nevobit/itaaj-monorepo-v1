@@ -1,35 +1,37 @@
 import Layout from '@/components/Layout'
 import SEO from '@/components/seo/seo'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Properties.module.css'
 import Link from 'next/link'
 import { DivisaFormater } from '@/types/divisa-formater'
 import Image from 'next/image'
 import { NextPage } from 'next'
+import PropertyCard from '@/components/PropertyCard'
+import Modal from '@/containers/Modal'
 
-const Property: NextPage<{property: any}> = ({property}) => {
+const Property: NextPage<{property: any, properties: any}> = ({property, properties}) => {
   
-  console.log(property)
+  const [open, setOpen] = useState(true);
   return (
     <Layout>
-     <SEO title='Propiedades' />
+     <SEO title={property.name} description='Esta propiedad es perfecta para ti, vivie el sueño de tener vivienda propia' />
       <div className={styles.header}>
        <Link href='/properties'><a><i className='bx bx-arrow-back' ></i> Volver</a></Link>
       </div>
       <div className={styles.images}>
        <div className={styles.photo1}>
-        <Image src={property.images[0]}   width={800} height={800} objectFit='cover' />        
+        <Image src={property.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />        
        </div>
-       <Image src={property.images[1]}  width={500} height={500} />
+       <Image src={property.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
        { property.images[2] && (
-          <Image src={property.images[2]}  width={500} height={500} />        
+          <Image src={property.images[2]}  alt='Imagen numero 3 de la propiedad' width={500} height={500} />        
        )}
        {property.images[3] && (
-       <Image src={property.images[3]}  width={500} height={500} />
+       <Image src={property.images[3]}  alt='Imagen numero 4 de la propiedad' width={500} height={500} />
         
        )}
        {property.images[4] && (
-       <Image src={property.images[4]}  width={500} height={500} />        
+       <Image src={property.images[4]} alt='Imagen numero 5 de la propiedad'  width={500} height={500} />        
        )}
        
       </div>
@@ -39,7 +41,7 @@ const Property: NextPage<{property: any}> = ({property}) => {
         <p className={styles.price}>{DivisaFormater({value: property.price})}</p>       
         <Link href="/"><a><i className='bx bx-share-alt' ></i> Compartir</a></Link>
        </div>
-       <Link href="/"><a className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Sugerir precio</a></Link>
+       <button onClick={() => setOpen(true)} className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Realizar una propuesta</button>
        <div className={styles.amenities}>
         <div>
         <i className='bx bx-bed' ></i>
@@ -47,7 +49,7 @@ const Property: NextPage<{property: any}> = ({property}) => {
         </div>
         <div>
         <i className='bx bx-bath' ></i>
-        <p>{property.bathrooms} banos</p>
+        <p>{property.bathrooms} baños</p>
         </div>
         <div>
         <i className='bx bx-area' ></i>
@@ -121,6 +123,14 @@ const Property: NextPage<{property: any}> = ({property}) => {
        <h2 className={styles.title_property}>
         Propiedades similares...
        </h2>
+       
+       <div className={styles.properties_list}>
+          {properties
+            ?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
+            .map((property: any) => (
+              <PropertyCard {...property} />
+            ))}
+        </div>
        </div>
        
        <form className={styles.form}>
@@ -143,6 +153,8 @@ const Property: NextPage<{property: any}> = ({property}) => {
        </form>
        
       </div>
+      
+      <Modal open={open} closeModal={() => setOpen(!open)} />
     </Layout>
   )
 }
@@ -161,6 +173,18 @@ export const getServerSideProps: any = async (context:any) => {
       }
     }
   );
+  
+  const resProperties = await fetch(
+    'https://itaaf-api-production.up.railway.app/api/v1/properties',
+    {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
+
+  const resultProeprties: any = await resProperties.json();
 
   const result: any = await res.json();
   // const resultsProducts: GetComputersResults = await resProducts.json();
@@ -168,6 +192,7 @@ export const getServerSideProps: any = async (context:any) => {
   return {
     props: {
       property: result[0],
+      properties: resultProeprties.items
     },
   };
 };

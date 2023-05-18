@@ -28,3 +28,9 @@
 .preview_img {
  max-width: 6rem;
 }
+
+.preview_container{
+ display: flex;
+ align-items: center;
+ gap: 2rem;
+}

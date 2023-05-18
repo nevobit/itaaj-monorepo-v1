@@ -6,10 +6,10 @@ import { NextPage } from 'next'
 import Link from 'next/link'
 import PostCard from '@/components/PostCard'
 
-const Blog:NextPage<{posts: any, count: number}> = ({posts, count}) => {
+const Blog:NextPage<{posts: any, count: number}> = ({posts}) => {
   return (
     <Layout>
-     <SEO title='Blog' />
+     <SEO title='Blog' description='Vienvenido al blog de Itaaj, aqui podra encontrar todo lo relacionado con como comprar una vivienda.' />
       <div className={styles.header}>
         <Link href='/'>
           Inicio
@@ -39,21 +39,9 @@ const Blog:NextPage<{posts: any, count: number}> = ({posts, count}) => {
       <h1 className={styles.title}>Tips, guias y consejos para comprar vivienda</h1>
       
       <div className={styles.posts}>
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        
-        
+        {posts.map((post: any) => (
+          <PostCard key={post.uuid} {...post} />        
+        ))}
       </div>
       
       
@@ -80,13 +68,13 @@ const Blog:NextPage<{posts: any, count: number}> = ({posts, count}) => {
 
 export default Blog
 
-  export const getServerSideProps: any = async () => {
-    const res = await fetch(
-      "http://localhost:8000/api/v1/posts"
-    );
+export const getServerSideProps: any = async () => {
+  const res = await fetch(
+    "https://itaaf-api-production.up.railway.app/api/v1/posts"
+  );
 
-    const result: any = await res.json();
-    // const resultsProducts: GetComputersResults = await resProducts.json();
+  const result: any = await res.json();
+     // const resultsProducts: GetComputersResults = await resProducts.json();
 
     return {
       props: {

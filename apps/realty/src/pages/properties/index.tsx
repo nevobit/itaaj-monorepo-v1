@@ -8,7 +8,7 @@ import { NextPage } from 'next'
 const Properties:NextPage<{properties: any, count: number}> = ({properties, count}) => {
   return (
     <Layout>
-     <SEO title='Propiedades' />
+     <SEO title='Propiedades' description='Viviendas y casas en venta en Mexico' />
       <div className={styles.header}>
        <h2>Filtros</h2>
        <select name="" id="">
@@ -18,7 +18,7 @@ const Properties:NextPage<{properties: any, count: number}> = ({properties, coun
         <option value="">Tipo de vivienda</option>        
        </select>
        <select name="" id="">
-        <option value="">Tipo de construccion</option>        
+        <option value="">Tipo de construcción</option>        
        </select>
        <select name="" id="">
         <option value="">Precio</option>        
@@ -27,7 +27,7 @@ const Properties:NextPage<{properties: any, count: number}> = ({properties, coun
         <option value="">Habitaciones</option>        
        </select>
        <select name="" id="">
-        <option value="">Banos</option>        
+        <option value="">Baños</option>        
        </select>
       </div>
      {count == 0? (
@@ -47,16 +47,16 @@ const Properties:NextPage<{properties: any, count: number}> = ({properties, coun
             <p>Ordenar</p>
           </span>
           <select name="" id="">
-            <option value="score">Puntuacion</option>
+            <option value="score">Puntuación</option>
             <option value="recents">Mas recientes</option>
             <option value="low">Mas baratos</option>
             <option value="high">Mas caros</option>
             <option value="big">Mas grandes</option>
-            <option value="small">Mas pequenos</option>
+            <option value="small">Mas pequeños</option>
           </select>
         </div>
       </div>
-      {properties?.map((property:any) => (
+      {properties?.filter((property:any) => property.category != 'investment' ).map((property:any) => (
        <Property key={property.uuid} {...property} />      
       ))}
       </div>

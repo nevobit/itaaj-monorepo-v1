@@ -38,6 +38,7 @@ const CreatePropety: React.FC = () => {
     partner: ""
   });
   
+  console.log(property)
   const addImages = (e: any) => {
     uploadImage(e?.target?.files![0]);
 };
@@ -108,10 +109,10 @@ const CreatePropety: React.FC = () => {
         </Field>
         
         <Field label="Street">
-          <Input name="street" onChange={handleChange} />
+          <Input name="street"  onChange={handleChange} />
         </Field>
         
-        <Field label="External Number">
+        <Field label="External Number" >
           <Input name="external_number" onChange={handleChange} />
         </Field>
         

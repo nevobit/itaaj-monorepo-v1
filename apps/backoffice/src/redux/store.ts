@@ -11,6 +11,6 @@ export interface AppStore {
 export default configureStore({
     reducer: {
         properties: propertiesSlice.reducer,
-        posts: postsSlice.reducer,
+        posts: postsSlice.reducer
     },
 });
