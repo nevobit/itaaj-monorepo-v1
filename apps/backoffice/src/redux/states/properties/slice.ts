@@ -17,7 +17,7 @@ const propertiesSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            .addCase(getProperties.pending || createProperties.pending, (state) => {
+            .addCase(getProperties.pending, (state) => {
                 state.loading = true;
                 state.error = undefined;
             })
@@ -28,6 +28,10 @@ const propertiesSlice = createSlice({
             .addCase(getProperties.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
+            })
+            .addCase(createProperties.pending, (state) => {
+                state.loading = true;
+                state.error = undefined;
             })
             .addCase(createProperties.fulfilled, (state, action) => {
                 state.loading = false;

@@ -99,6 +99,11 @@ summary {
   display: list-item;
 }
 
+select{
+  border: 1px solid rgba(0, 0, 0, .1);
+  height: 3.5rem;
+}
+
 @media (prefers-reduced-motion: reduce){
   html:focus-within {
       scroll-behavior: auto;

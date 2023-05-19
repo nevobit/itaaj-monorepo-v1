@@ -15,4 +15,5 @@
  border-radius: .5rem;
  color: var(--primary-color);
  font-weight: 600;
+ box-shadow: var(--shadow);
 }
