@@ -8,5 +8,6 @@ export const PrivateRoutes = {
     PROPERTIES: 'properties',
     POSTS: 'posts',
     PROPERTIES_CREATE :'properties/create',
+    PROPERTIES_EDIT :'properties/:slug',
     POSTS_CREATE :'posts/create'
 }

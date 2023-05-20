@@ -1,6 +1,6 @@
 import { State } from '@/types/redux/State';
 import { createSlice } from '@reduxjs/toolkit';
-import { getProperties, createProperties, deleteProperties, updateProperties } from './thunks';
+import { getProperties, createProperties, deleteProperties, updateProperties, getProperty } from './thunks';
 
 const propertiesSlice = createSlice({
     name: 'properties',
@@ -62,6 +62,18 @@ const propertiesSlice = createSlice({
                 state.success = true;
             })
             .addCase(updateProperties.rejected, (state, action) => {
+                state.loading = false;
+                state.error = action.error.message;
+            })
+            .addCase(getProperty.pending, (state) => {
+                state.loading = true;
+                state.error = undefined;
+            })
+            .addCase(getProperty.fulfilled, (state, action) => {
+                state.loading = false;
+                state.result = action.payload;
+            })
+            .addCase(getProperty.rejected, (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             });
