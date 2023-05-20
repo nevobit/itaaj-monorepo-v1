@@ -1,0 +1,18 @@
+.spiner{
+ display: inline-block;
+ width: 2rem;
+ height: 2rem;
+ border: 2px solid rgba(255, 255, 255, .8);
+ border-left: 2px solid transparent;
+ border-radius: 50%;
+ transition: .2s;
+ animation: spiner .5s infinite linear;
+}
+
+@keyframes spiner {
+ 0%{
+  transform: rotate(0);
+ }100%{
+  transform: rotate(360deg);
+ }
+}

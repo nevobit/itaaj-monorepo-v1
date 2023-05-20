@@ -9,6 +9,7 @@ import Posts from "./screens/Posts";
 import CreatePost from "./screens/Posts/Create";
 import Home from "./screens/Home";
 import Signin from "./screens/Signin";
+import Proposals from "./screens/Proposals";
 
 const Application = () => {
   return (
@@ -18,6 +19,7 @@ const Application = () => {
             <Route path={PublicRoutes.SIGNIN} element={<Signin />} />
             <Route path={PrivateRoutes.PROPERTIES} element={<Properties />} />
             <Route path={PrivateRoutes.POSTS} element={<Posts />} />
+            <Route path={PrivateRoutes.PROPOSALS} element={<Proposals />} />
             <Route path={PrivateRoutes.HOME} element={<Home />} />
             <Route
               path={PrivateRoutes.PROPERTIES_CREATE}

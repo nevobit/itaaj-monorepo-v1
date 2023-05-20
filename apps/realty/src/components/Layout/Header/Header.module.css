@@ -33,6 +33,10 @@
  color: rgba(0, 0, 0, .8);
 }
 
+.picture{
+ width: 5rem;
+}
+
 .logo{
  display: flex;
  align-items: center;
@@ -65,6 +69,17 @@
  padding-inline: 1rem;
 }
 
+.mobile_menu_btn{
+ background-color: transparent;
+ margin-right: 1.5rem;
+ margin-top: .5rem;
+ display: none;
+}
+
+.mobile_menu{
+ display: none;
+}
+
 @media screen and (max-width:768px){
  .header{
   width: 100%;
@@ -74,7 +89,58 @@
  .header nav a{
   display: none;
  }
+ .mobile_menu_btn{
+  display: inline-block;
+ }
+ 
+ .header nav .logo{
+  display: flex;
+  margin-right: 0rem;
+  padding: 0;
+ }
  .header select{
   display: none;
  }
+ 
+ .mobile_menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 1rem 2rem;
+  transform: translateX(-550px);
+  transition: .3s;
+ }
+ 
+ .mobile_menu.active{
+  transform: translateX(0px);
+  
+ }
+ 
+ .mobile_menu > span{
+  display: flex;
+
+ }
+ 
+ .mobile_menu a{
+  font-weight: 600;
+  color: rgba(0, 0, 0, .8);
+  font-size: 1.8rem;
+ }
+ 
+
+ 
+ .mobile_menu select{
+  display: inline-block;
+  border: 1px solid rgba(0, 0, 0, .1);
+  height: 4.5rem;
+ }
+ 
 }

@@ -6,7 +6,6 @@ import styles from '../styles/Home.module.css';
 import { DivisaFormater } from '@/types/divisa-formater';
 // import properties from '@/_mock_/properties';
 import Link from 'next/link';
-import { MessageSquare } from 'react-feather';
 import useTranslation from 'next-translate/useTranslation';
 
 const Home: NextPage<{ properties: any }> = ({ properties }) => {
