@@ -2,14 +2,19 @@ import states from '@/utilities/states';
 import styles from './Modal.module.css'
 import { ArrowRight, Calendar, Edit, Globe, Link, List, Mail, MapPin, MoreVertical, Phone, Send, ShoppingCart } from 'react-feather'
 import countries from '@/utilities/countries';
-import { useEffect, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
+import axios from 'axios';
+import Swal from 'sweetalert2'
+import Loader from '@/components/Loader';
 
 interface Props {
  open: boolean;
  closeModal: () => void; 
+ property: string;
 }
 
-const Modal = ({ open, closeModal }: Props) => {
+const Modal = ({ open, closeModal, property }: Props) => {
+  const [loading, setLoading] = useState(false);
   
   const [proposal, setProposal] = useState({
     name: '',
@@ -19,8 +24,11 @@ const Modal = ({ open, closeModal }: Props) => {
     economic_proposal: 0,
     apartado: 50000,
     enganche: 0,
-    rest: 0
+    rest: 0,
+    fund: '',
+    property: property
   }) 
+  
   
   const handleChange = (e:any) => {
     // setProposal((prev) => ({...prev, ['enganche']: ((proposal.economic_proposal * 0.2) - prev.apartado) }))
@@ -28,9 +36,34 @@ const Modal = ({ open, closeModal }: Props) => {
     
   }
   
+  console.log(proposal)
+  
+  
+  const onSubmit = async(e: FormEvent) => {
+    e.preventDefault(); 
+    try{
+      setLoading(true);
+      const { data } = await axios.post('http://localhost:8000/api/v1/proposals', proposal);      
+      console.log(data);
+      setLoading(false);
+      Swal.fire({
+        title: 'Felicidades!',
+        text: 'Tu propuesta ha sido enviada correctamente',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+      });
+      closeModal()
+      
+    }
+    catch(err){
+      console.log(err)
+    }
+    
+  }
+  
    useEffect(() => {
      setProposal((prev) => ({...prev, ['enganche']: (prev.economic_proposal * 0.2) - 50000 }))
-     setProposal((prev) => ({...prev, ['rest']: prev.economic_proposal - prev.enganche + 50000 }))
+     setProposal((prev) => ({...prev, ['rest']: prev.economic_proposal - prev.enganche }))
      
   }, [proposal.economic_proposal]);
   
@@ -55,12 +88,12 @@ const Modal = ({ open, closeModal }: Props) => {
           </button>
         </div>
         
-        <form className={styles.form}>
+        <form onSubmit={onSubmit} className={styles.form}>
         <h3>Datos personales</h3>
           <div className={styles.field}>
             <label htmlFor="">
             Nombre
-            <input type="text" placeholder='Nombre' />            
+            <input type="text" name='name' onChange={handleChange} placeholder='Nombre' />            
               
             </label>
           </div>
@@ -68,7 +101,7 @@ const Modal = ({ open, closeModal }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Nacionalidad
-              <select name="" id="">
+              <select name="nationality" onChange={handleChange}>
                 <option value="">Selecciona una nacionalidad</option>
                 {countries.map((state) => (
                   <option value={state.countryName}>{state.countryName}</option>
@@ -79,13 +112,13 @@ const Modal = ({ open, closeModal }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Correo electronico
-              <input type="text" placeholder='Ingresa tu correo' />            
+              <input type="text" name='email' onChange={handleChange} placeholder='Ingresa tu correo' />            
             </label>
           </div>
           <div className={styles.field}>
           <label htmlFor="">
             Telefono
-             <input type="text" placeholder='Ingresa tu telefono' />          
+             <input type="text" name='phone' onChange={handleChange} placeholder='Ingresa tu telefono' />          
             </label>
           </div>
           
@@ -101,21 +134,21 @@ const Modal = ({ open, closeModal }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Apartado
-             <input type="text" value='50,000' readOnly />          
+             <input type="text" onChange={handleChange} value='50,000' readOnly />          
             </label>
           </div>
           
           <div className={styles.field}>
           <label htmlFor="">
             Enganche
-             <input type="text" value={proposal.enganche}  readOnly />          
+             <input type="text" onChange={handleChange} value={proposal.enganche}  readOnly />          
             </label>
           </div>
           
           <div className={styles.field}>
           <label htmlFor="">
             Restante
-             <input type="text" value={proposal.rest} readOnly />          
+             <input type="text" onChange={handleChange} value={proposal.rest} readOnly />          
             </label>
           </div>
           {/* <div className={styles.field}>
@@ -129,16 +162,16 @@ const Modal = ({ open, closeModal }: Props) => {
           <div className={styles.field}>
           <label htmlFor="">
             Como piensas fondearlo
-              <select>
-                <option value="">Efectivo</option>
-                <option value="">Efectivo & Crédito</option>
-                <option value="">Crypto</option>
-                <option value="">Fiat (Efectivo o Crédito) y Crypto</option>
+              <select name='fund' onChange={handleChange}>
+                <option value="Efectivo">Efectivo</option>
+                <option value="Efectivo & Credito">Efectivo & Crédito</option>
+                <option value="Crypto">Crypto</option>
+                <option value="Fiat (Efectivo o Credito) y Crypto">Fiat (Efectivo o Crédito) y Crypto</option>
               </select>
             </label>
           </div>
           
-          <button className={styles.proposal_btn}>Enviar propuesta</button>
+          <button className={styles.proposal_btn}>{loading? <Loader /> : 'Enviar propuesta'}</button>
         </form>
       </div> 
     </>

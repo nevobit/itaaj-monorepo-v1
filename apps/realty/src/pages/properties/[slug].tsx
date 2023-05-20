@@ -128,7 +128,7 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
           {properties
             ?.filter((prop: any) => prop.category == 'general' && prop.slug !== property.slug)
             .map((property: any) => (
-              <PropertyCard {...property} />
+              <PropertyCard key={property.uuid} {...property} />
             ))}
         </div>
        </div>
@@ -154,7 +154,7 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
        
       </div>
       
-      <Modal open={open} closeModal={() => setOpen(!open)} />
+      <Modal open={open} closeModal={() => setOpen(!open)} property={property.uuid} />
     </Layout>
   )
 }

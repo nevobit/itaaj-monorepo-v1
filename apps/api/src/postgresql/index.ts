@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm';
 import { OfficerSchema, PostSchema, PropertySchema } from '../models';
+import { ProposalSchema } from '../models/proposals';
 
 const { HOST_MYSQL, USERNAME_MYSQL, PASSWORD, DATABASE } = process.env;
 
@@ -12,11 +13,11 @@ export const initPostgres = async () => {
    username: USERNAME_MYSQL,
    password: PASSWORD,
    database: DATABASE,
-   entities: [PropertySchema, PostSchema, OfficerSchema],
+   entities: [PropertySchema, PostSchema, OfficerSchema, ProposalSchema],
    synchronize: true,
-   // dropSchema: true,
+   dropSchema: true,
    ssl: {
-    rejectUnauthorized: true
+    rejectUnauthorized: false
    }
   });
   
