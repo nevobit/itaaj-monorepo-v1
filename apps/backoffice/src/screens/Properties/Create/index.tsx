@@ -65,35 +65,27 @@ const CreatePropety: React.FC = () => {
     uploadImage(e?.target?.files![0]);
   };
 
-  const [amenities, setAmenities] = useState<any[]>([]);
-  const addAmenities = () => {
-    const amenity = {
-      id: Date.now().toString(),
-      text: ''
-    }
-    
-    setAmenities([...amenities, amenity])
-  }
+  const [amenities, setAmenities] = useState<string[]>([]);
 
-  const handleText = (e:any, id:string) => {
-    e.preventDefault();
-    const index = amenities.findIndex((a:any) => a.id == id)
-    amenities[index].text = e.target.value;
-  }
+  const addAmenities = () => {
+      setAmenities([...amenities, ""]);
+  };
+
+  const handleText = (index:any, event:React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const newAmenities = [...amenities];
+    newAmenities[index] = event.target.value;
+    setAmenities(newAmenities);
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
   const onSubmit = (e: any) => {
     e.preventDefault();
-    const newAmenities: string[] = []
-    amenities.map(amenity => {
-      newAmenities.push(amenity.text)
-    })
     if (isCreate) {
-      dispatch(createProperties({...property, uuid: undefined, images: urls, amenities: newAmenities}) as any)
+      dispatch(createProperties({...property, uuid: undefined, images: urls, amenities}) as any)
     }else{
-      dispatch(updateProperties({...property, id: undefined, createdAt:undefined, images: urls, amenities: newAmenities}) as any)
+      dispatch(updateProperties({...property, id: undefined, createdAt:undefined, images: urls, amenities}) as any)
     }
   };
 
@@ -145,6 +137,7 @@ useEffect(() => {
       external_number: _result.external_number,
       internal_number: _result.internal_number,
     });
+    setAmenities(_result.amenities)
   }
 }, [result])
 
@@ -335,18 +328,18 @@ useEffect(() => {
         <h3>Amenities</h3>
           
         <Field label="Amenities" error={error} >
-          {amenities.map((amenity) => (
+          {amenities.map((amenity, index) => (
             <div 
-            key={amenity}
+            key={index}
             style={{
               marginBottom: 10
             }}>
-            <Input onChange={(e) => handleText(e, amenity.id)} />
+            <Input defaultValue={amenity} onChange={(e) => handleText(index, e)} />
             </div>
   
           ))}
           <button className={styles.btn_add} onClick={addAmenities}>Add Amenity</button>
-          </Field>
+        </Field>
         </div>
         <Button
           style={{
