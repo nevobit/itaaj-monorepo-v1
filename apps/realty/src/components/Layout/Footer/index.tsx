@@ -28,20 +28,30 @@ const Footer = () => {
           <h2 className={styles.copy}>
           </h2>
           <div className={styles.networks}>
-            <Link href="https://instagram.com/itaaj.mx?igshid=YmMyMTA2M2Y=">
-              <i className="bx bxl-instagram"></i>
+            <Link href="https://instagram.com/itaaj.mx?igshid=YmMyMTA2M2Y=" passHref>
+              <a target="_blank" rel="noopener noreferrer"> 
+                <i className="bx bxl-instagram"></i>
+              </a>
             </Link>
-            <Link href="https://www.facebook.com/itaajrealty">
-              <i className="bx bxl-facebook"></i>
+            <Link href="https://www.facebook.com/itaajrealty" passHref>
+              <a target="_blank" rel="noopener noreferrer"> 
+                <i className="bx bxl-facebook"></i>
+              </a>
             </Link>
-            <Link href="/">
-              <i className="bx bxl-twitter"></i>
+            <Link href="/" passHref>
+              <a target="_blank" rel="noopener noreferrer"> 
+                <i className="bx bxl-youtube"></i>
+              </a>
             </Link>
-            <Link href="/">
-              <i className="bx bxl-youtube"></i>
+            <Link href="/" passHref>
+              <a target="_blank" rel="noopener noreferrer"> 
+                <i className="bx bxl-twitter"></i>
+              </a>
             </Link>
-            <Link href="/">
-              <i className="bx bxl-linkedin"></i>
+            <Link href="https://www.linkedin.com/company/itaajonchain/" passHref>
+              <a target="_blank" rel="noopener noreferrer"> 
+                <i className="bx bxl-linkedin"></i>
+              </a>
             </Link>
           </div>
         </div>
@@ -55,9 +65,22 @@ const Footer = () => {
           </ul>
           <ul>
             <li className={styles.title}>Links Rapidos</li>
-            <li>Asesores Externos</li>
-            <li>Blog</li>
-            <li>Portafolio de desarrolladores</li>
+            <Link href="/agents" >
+              <a > 
+                <li>Asesores Externos</li>              
+              </a>
+            </Link>
+            
+            <Link href="/blog" >
+              <a > 
+                <li>Blog</li>              
+              </a>
+            </Link>
+            <Link href="/deals" >
+              <a > 
+                <li>Portafolio de desarrolladores</li>
+              </a>
+            </Link>
           </ul>
           <ul>
             <li className={styles.title}>Contactanos</li>

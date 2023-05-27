@@ -23,7 +23,7 @@
 
 .banner h1{
  text-transform: uppercase;
- font-size: 1.6rem;
+ font-size: 2.5rem;
  color: #fff;
  position: relative;
 }
@@ -36,6 +36,7 @@
 .banner p{
  position: relative;
  text-align: center;
+ font-size: 2.5rem;
 }
 
 .info{

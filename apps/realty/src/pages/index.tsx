@@ -95,7 +95,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
               tengan viabilidad financiera, legal y técnica.
             </p>
           </div>
-          <Link href="/properties">Ver todos los inmuebles </Link>
+          {/* <Link href="/properties">Ver todos los inmuebles </Link> */}
         </div>
         <div className={styles.properties}>
           {properties
@@ -139,7 +139,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
       </section>
 
       <section className={styles.why}>
-        <h2>¿Por qué escoger Itaaj?</h2>
+        <h2>¿Por qué vender mi propiedad en itaaj?</h2>
         <div className={styles.image}>
           <Image
             src="/img/value.png"
@@ -155,7 +155,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
             <h2>Propidades en General</h2>
             <p className={styles.copy}>Viviendas en Mexico</p>
           </div>
-          <Link href="/properties">Ver todos los inmuebles </Link>
+          {/* <Link href="/properties">Ver todos los inmuebles </Link> */}
         </div>
         <div className={styles.properties}>
           {properties
@@ -206,8 +206,8 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
               oportunidades para contribuir de manera significativa a que
               cualquier persona pueda <strong>alcanzar</strong> la casa de sus
               sueños.
-            </p>
-            <Link href="/">Descubre más sobre Itaaf</Link>
+            </p> 
+            <Link href="/blog">Descubre más sobre Itaaj</Link>
           </div>
           <div className={styles.image}>
             <Image
