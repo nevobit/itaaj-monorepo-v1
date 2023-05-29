@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import styles from './Exclusive.module.css';
 import { NextPage } from 'next';
 import Image from 'next/image';
+import { changeLanguage } from '@/utilities/changeLanguage';
 
 const Property: NextPage<{ property: any }> = ({ property }) => {
   const [actualImage, setActualImage] = useState(property.images[0]);
@@ -36,7 +37,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
             {property.name}
           </h2>
           <p>
-            {property.type} de {property.area.total_area} m&sup2;
+             {changeLanguage(property.type)} de {property.area.total_area} m&sup2;
           </p>
         </div>
         <Image
@@ -49,7 +50,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
       </div>
       <div className={styles.header}>
         <div className={styles.title}>
-          <h2>CONOCE TU PROXIMO {property.type.toString().toUpperCase()} EN {property.city.toString().toUpperCase()}</h2>
+          <h2>CONOCE TU PROXIMO {changeLanguage(property.type).toString().toUpperCase()} EN {property.city.toString().toUpperCase()}</h2>
        <p dangerouslySetInnerHTML={{ __html: property.description }}></p>          
         </div>
         <div className={styles.info}>
@@ -79,7 +80,7 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
          <div className={styles.caract}>
           <h2>Caracteristicas</h2>
           <ul>
-            <li>{property.type} de {property.area.total_area} m&sup2;</li>
+            <li>{changeLanguage(property.type)} de {property.area.total_area} m&sup2;</li>
             <li>{property.bedrooms} recamaras</li>
             <li>{property.bathrooms} baños</li>
             {property.amenities?.map((amenity: string) => (

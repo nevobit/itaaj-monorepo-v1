@@ -32,7 +32,7 @@ const Deals: NextPage<{ properties: any }> = ({ properties })  => {
                 <div className={styles.project_info}>
                   <span>{property.city}, {property.state}</span>
                   <h2>{property.name}</h2>
-                    <p dangerouslySetInnerHTML={{ __html: property.description }}></p>      
+                    <p className={styles.copy} dangerouslySetInnerHTML={{ __html: property.description }}></p>      
                   
                   <div className={styles.class_info}>
                     <ul>

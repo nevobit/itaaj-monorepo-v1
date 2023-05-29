@@ -5,9 +5,9 @@ export const PublicRoutes = {
 
 export const PrivateRoutes = {
     HOME: '/',
-    PROPERTIES: 'properties',
-    POSTS: 'posts',
+    PROPERTIES: '/properties',
+    POSTS: '/posts',
     PROPOSALS: '/proposals',
-    PROPERTIES_CREATE :'properties/create',
-    POSTS_CREATE :'posts/create'
+    PROPERTIES_CREATE :'/properties/create',
+    POSTS_CREATE :'/posts/create'
 }

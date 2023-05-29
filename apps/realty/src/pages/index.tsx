@@ -7,6 +7,7 @@ import { DivisaFormater } from '@/types/divisa-formater';
 // import properties from '@/_mock_/properties';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
+import { changeLanguage } from '@/utilities/changeLanguage';
 
 const Home: NextPage<{ properties: any }> = ({ properties }) => {
   const { t } = useTranslation();
@@ -121,7 +122,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                       {DivisaFormater({ value: property.price })}
                     </span>
                     <p className={styles.title}>
-                      <strong>{property.type}</strong> en {property.city}
+                      <strong>{changeLanguage(property.type)}</strong> en {property.city}
                       {', '} <strong>{property.name}</strong>
                     </p>
                     <ul className={styles.list}>
@@ -181,7 +182,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                       {DivisaFormater({ value: property.price })}
                     </span>
                     <p className={styles.title}>
-                      <strong>{property.type}</strong> en {property.city}
+                      <strong>{changeLanguage(property.type)}</strong> en {property.city}
                     </p>
                     <ul className={styles.list}>
                       <li>{property.bedrooms} habs</li>

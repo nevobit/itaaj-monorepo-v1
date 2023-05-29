@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { NextPage } from 'next'
 import PropertyCard from '@/components/PropertyCard'
 import Modal from '@/containers/Modal'
+import { changeLanguage } from '@/utilities/changeLanguage'
 
 const Property: NextPage<{property: any, properties: any}> = ({property, properties}) => {
   
@@ -20,19 +21,19 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
       </div>
       <div className={styles.images}>
        <div className={styles.photo1}>
-        <Image src={property.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />        
+        {/* <Image src={property.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />         */}
        </div>
-       <Image src={property.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
+       {/* <Image src={property.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
        { property.images[2] && (
           <Image src={property.images[2]}  alt='Imagen numero 3 de la propiedad' width={500} height={500} />        
-       )}
-       {property.images[3] && (
+       )} */}
+       {/* {property.images[3] && (
        <Image src={property.images[3]}  alt='Imagen numero 4 de la propiedad' width={500} height={500} />
         
        )}
        {property.images[4] && (
        <Image src={property.images[4]} alt='Imagen numero 5 de la propiedad'  width={500} height={500} />        
-       )}
+       )} */}
        
       </div>
       <div className={styles.container}>
@@ -60,7 +61,7 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
           <p>1 planta</p>
         </div>
        </div>
-       <h2 className={styles.title_property}><strong>{property.type}</strong> en venta en {property.city}</h2>
+       <h2 className={styles.title_property}><strong>{changeLanguage(property.type)}</strong> en venta en {property.city}</h2>
        <p className={styles.description} dangerouslySetInnerHTML={{ __html: property.description }}></p>
        <h2 className={styles.title_property}>
         Caracteristicas
@@ -71,7 +72,7 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
          <i className='bx bx-home-heart'></i>
         <span>
          <p>Tipo de inmueble</p>
-         <h3>{property.type}</h3>
+         <h3>{changeLanguage(property.type)}</h3>
         </span>
         </div>
         <div>
