@@ -5,6 +5,7 @@ import styles from './Exclusive.module.css';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import { changeLanguage } from '@/utilities/changeLanguage';
+import Link from 'next/link';
 
 const Property: NextPage<{ property: any }> = ({ property }) => {
   const [actualImage, setActualImage] = useState(property.images[0]);
@@ -27,6 +28,17 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
       setActualImageIn((prev) => prev + 1);
     }
     setActualImage(property.images[actualImageIn])
+  }
+  
+  const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad";
+
+  const handleShare = async () => {
+    if(navigator.share){
+      await navigator.share({
+        title: "Itaaj Realty",
+        url: window.location.href,
+      });
+    }
   }
   return (
     <Layout>
@@ -61,7 +73,12 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
           <span>LOCALIZADO EN</span>
           <p>{property.city}, {property.state}</p>
           <p>{property.country}</p>
+            <div className={styles.buttons_list}>
+          <button onClick={handleShare} className={styles.btn_share}><i className='bx bx-share-alt' ></i> Compartir</button>
           <button>CONTACTO</button>
+          <Link href={whatsappLink}><a className={styles.btn_whatsapp}>Whatsapp</a></Link>
+        
+            </div>
         </div>
       </div>
 

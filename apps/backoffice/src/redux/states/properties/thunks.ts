@@ -21,6 +21,7 @@ export const createProperties = createAsyncThunk<Partial<any>, any>('properties/
 
 export const updateProperties = createAsyncThunk<any, any>('properties/update', async (brand) => {
     const { data } = await itaajApi.put('/properties', brand);
+    console.log("data up",data)
     return data;
 });
 
@@ -28,3 +29,8 @@ export const deleteProperties = createAsyncThunk('properties/delete', async (uui
     const { data } = await itaajApi.delete(`/properties/${uuid}`);
     return data;
 });
+
+export const getProperty = createAsyncThunk<any, string>('properties/getProperty', async (slug) => {
+    const { data } = await itaajApi.get(`/properties/${slug}`);
+    return data;
+  });

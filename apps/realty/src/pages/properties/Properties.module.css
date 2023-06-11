@@ -131,7 +131,7 @@
  color: rgba(0,0,0,0.8);
 }
 
-.main a{
+.main button{
  color: var(--primary-color);
  font-weight: 600;
  font-size: 1.4rem;
@@ -139,6 +139,7 @@
  align-items: center;
  gap: .5rem;
  cursor: pointer;
+ background-color: transparent;
 }
 
 .main a i{
@@ -174,11 +175,14 @@
  display: flex;
  align-items: center;
  gap: .3rem;
- color: var(--primary-color);
+ color: #fff;
  font-weight: 600;
  font-size: 1.4rem;
  margin-top: 1rem;
  background-color: transparent;
+ padding: 1rem 2rem;
+ border-radius: 5rem;
+ background-color: var(--primary-color);
 }
 
 .price_sug i{
@@ -306,6 +310,21 @@
 .notProperties > div i{
  color: var(--primary-color);
  font-size: 4rem;
+}
+
+.form .btn_whatsapp{
+ display: inline-block;
+ color: #fff;
+ width: 100%;
+ text-align: center;
+ border-radius: .5rem;
+ height: 5rem;
+ margin-top: 2rem;
+ background-color: #25D366;
+ font-size: 1.4rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 @media screen and (max-width: 768px) {

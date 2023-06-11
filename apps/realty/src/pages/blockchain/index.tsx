@@ -1,6 +1,5 @@
 import Layout from '@/components/Layout'
 import styles from './Blockchain.module.css'
-import Image from 'next/image'
 import SEO from '@/components/seo/seo'
 
 const Blockchain = () => {
@@ -10,30 +9,29 @@ const Blockchain = () => {
      <div className={styles.hero_back}>      
      <section className={styles.hero}>
       <div>
-        <p>
-        Si eres DESARROLLADOR de proyectos inmobiliarios o llevas a cabo un proceso de lotificación de tierra con enfoque industrial o habitacional, nuestra solución sobre la cadena de bloques (Blockchain) facilitará tu proceso de comercialización.
-        </p>
-        <p>
-        Los Derechos de propiedad de tu proyecto integrados a un <strong>Proceso de Tokenización</strong> te permitirá <strong>Portabilidad de Derechos</strong> con la finalidad de.
-        </p>
+        <h4 className={styles.title}>
+        Compra tu inmueble en 4 pasos!          
+        </h4>
         
-        <ul>
-          <li>Incrementar el <strong>dinamismo de los tiempos</strong> de formalización de compraventa y apartado de propiedades.</li>
-          <li>Incrementar el <strong>dinamismo de los tiempos del proceso de traslado de dominio</strong> de cada lote o propiedad.</li>
-          <li>Portabilidad de derechos y contratos inteligentes que gobiernan el proceso de traslado de dominio.</li>
-          <li>Acceso a un <strong>Marketplace Web3 que permitirá la compraventa instantánea</strong> de propiedades.
-Firma de documentos y autenticación de identidad desde cualquier parte del mundo.
-</li>
+        <ul className={styles.list}>
+          <li>1. Realiza una propuesta económica en nuestra plataforma.</li>
+          <li>2. Una vez aceptada, realiza el pago del apartado con el fín de formalizar la propuesta.</li>
+          <li>3. Fijaremos fecha de firma del contrato de compraventa. El comprador deberá pagar el enganche en ese evento y fijar los tiempos para el pago total de inmueble.</li>
+          <li>4. A la feha de liquidación recibirás el 100% de los derechos sobre tu propiedad de forma compretamente digital. </li>
         </ul>
+       
       </div>
-      <Image src='/btc-hero.avif' width={428} height={480} alt='Ahora puedes hacer operaciones en bienes raices con Crypto' /> 
      </section>
      </div>
      
-      <section className={styles.how}>
-        <h1>¿Cómo adquirir una vivienda usando Crypto?</h1>
-        <Image src='/blockpro.png' width={600} height={600} alt='Blockchain como adquirir vivienda' />
-      </section>
+     <section>
+     <ul className={styles.list_down}>
+          <li>• Los contratos firmados digitalmente quedarán registrados y encriptados en una Blockchain privada, asegurando con ello su inalterabilidad y confidencialidad.</li>
+          <li>•	Cada documento procesado se vuelve único, irrepetible e inalterable. </li>
+          <li>•	Comprueba que la persona que firma o acepta es realmente quien dice ser, cumple con regulaciones de KYC.</li>
+        </ul>
+     </section>
+
       <section className={styles.future}>
        <h2>¡Súmate al futuro!</h2>
        <div>

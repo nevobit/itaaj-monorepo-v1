@@ -24,6 +24,10 @@ const Application = () => {
             <Route
               path={PrivateRoutes.PROPERTIES_CREATE}
               element={<CreatePropety />}
+            />   
+            <Route
+              path={PrivateRoutes.PROPERTIES_EDIT}
+              element={<CreatePropety />}
             />
             <Route path={PrivateRoutes.POSTS_CREATE} element={<CreatePost />} />
             <Route path="*" element={<NotFound />} />

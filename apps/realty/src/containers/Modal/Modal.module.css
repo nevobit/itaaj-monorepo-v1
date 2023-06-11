@@ -197,3 +197,13 @@
  display: block;
  font-size: 1.5rem;
 }
+
+.close_btn{
+ background-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+ .modal {
+  width: 100%;
+ }
+}

@@ -112,6 +112,12 @@
  max-width: 25rem;
 }
 
+.nav ul li button{
+ background-color: transparent;
+ color: #fff;
+ font-size: 1.4rem;
+}
+
 .nav .title{
  margin-bottom: 3rem;
  font-weight: 600;

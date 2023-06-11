@@ -1,6 +1,6 @@
 import states from '@/utilities/states';
 import styles from './Modal.module.css'
-import { ArrowRight, Calendar, Edit, Globe, Link, List, Mail, MapPin, MoreVertical, Phone, Send, ShoppingCart } from 'react-feather'
+import { ArrowRight, Calendar, Edit, Globe, Link, List, Mail, MapPin, MoreVertical, Phone, Send, ShoppingCart, X } from 'react-feather'
 import countries from '@/utilities/countries';
 import { FormEvent, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -62,8 +62,8 @@ const Modal = ({ open, closeModal, property }: Props) => {
   }
   
    useEffect(() => {
-     setProposal((prev) => ({...prev, ['enganche']: (prev.economic_proposal * 0.2) - 50000 }))
-     setProposal((prev) => ({...prev, ['rest']: prev.economic_proposal - prev.enganche }))
+     setProposal((prev) => ({...prev, ['enganche']: Number(prev.economic_proposal * 0.2)}))
+     setProposal((prev) => ({...prev, ['rest']:Number(prev.economic_proposal) - Number(prev.enganche) }))
      
   }, [proposal.economic_proposal]);
   
@@ -83,8 +83,8 @@ const Modal = ({ open, closeModal, property }: Props) => {
           <div>
             <h2>Realizar una propuesta</h2>
           </div>
-          <button>
-            <MoreVertical />{" "}
+          <button onClick={closeModal} className={styles.close_btn}>
+            <X />
           </button>
         </div>
         
@@ -133,21 +133,21 @@ const Modal = ({ open, closeModal, property }: Props) => {
           
           <div className={styles.field}>
           <label htmlFor="">
-            Apartado
+            Apartado. (Monto negociable)
              <input type="text" onChange={handleChange} value='50,000' readOnly />          
             </label>
           </div>
           
           <div className={styles.field}>
           <label htmlFor="">
-            Enganche
+            Enganche = (Propuesta Económica x 20%) - Apartado
              <input type="text" onChange={handleChange} value={proposal.enganche}  readOnly />          
             </label>
           </div>
           
           <div className={styles.field}>
           <label htmlFor="">
-            Restante
+            Restante = Propuesta Económica - Enganche
              <input type="text" onChange={handleChange} value={proposal.rest} readOnly />          
             </label>
           </div>

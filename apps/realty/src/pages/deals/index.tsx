@@ -5,13 +5,23 @@ import SEO from '@/components/seo/seo'
 import { NextPage } from 'next'
 
 const Deals: NextPage<{ properties: any }> = ({ properties })  => {
+  
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/hipotesis.pdf'; // Ruta relativa al archivo PDF
+    link.download = 'Hipotesis_de_Inversion.pdf'; // Nombre de archivo para descargar
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.click();
+  };
+  
   return (
     <Layout>
       <SEO title='Desarrolladores Inmobiliarios' description='Nuestros proyectos se estructuran hacia la portabilidad de derechos y seguridad jurídica del equipo de desarrolladores.' />
       <div className={styles.banner}>
         <h1>Forma parte del Equipo de Desarroladores Inmobiliarios</h1>
         <h2>Conoce nuestros proyectos</h2>
-        <p>Proyectos estructurados hacia el complimiento. <br /> Solides y transparencia de la estructura <strong>Jurídica, Financiera y Fiscal</strong> de cada proyecto.</p>
+        <p>Proyectos estructurados hacia el complimiento. <br /> Solidez y transparencia de la estructura <strong>Jurídica, Financiera y Fiscal</strong> de cada proyecto.</p>
       </div>
       
       <section className={styles.info}>
@@ -47,7 +57,7 @@ const Deals: NextPage<{ properties: any }> = ({ properties })  => {
                     <h3 className={styles.percent}><i className='bx bx-up-arrow-alt' ></i> {index == 1? "18.5%" : "20%"} </h3>
                   </div>
                   <div className={styles.property_footer}>
-                    <button>¡Quiero mas información!</button>
+                    <button onClick={handleDownload}>¡Hipótesis de Inversión!</button>
                   </div>
                 </div>
               </div>

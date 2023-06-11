@@ -12,6 +12,8 @@ const language:any = {
   "fr": "French"
 }
 
+const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
+
 const Header = () => {
   const { t, lang } = useTranslation();
   const [open, setOpen] = useState(false);
@@ -49,8 +51,11 @@ const Header = () => {
           <option key={locale} value={locale}>{language[locale.toString()]}</option>        
         ))}
        </select>
-       <Link href="/">{t('common:contact')}</Link>
-
+        <Link href={whatsappLink} passHref>
+              <a target="_blank" rel="noopener noreferrer"> 
+              {t('common:contact')}
+              </a>
+        </Link>
       </div>
       
       <div className={open? `${styles.mobile_menu} ${styles.active}`: styles.mobile_menu}>

@@ -28,7 +28,7 @@ const Table = <T extends DataRecord>({
     pageInfo,
     setItemSelected,
 }: Props<T>) => {
-    const [openMenu, setOpenMenu] = useState<boolean>(false);
+    const [openMenu, setOpenMenu] = useState<string>("");
     const showInit = limit * ((pageInfo?.page || 1) - 1) + 1;
     const showEnd = Math.ceil(count / (pageInfo?.pages || 1)) * (pageInfo?.page || 1);
 

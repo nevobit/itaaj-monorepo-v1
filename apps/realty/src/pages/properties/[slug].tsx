@@ -12,7 +12,19 @@ import { changeLanguage } from '@/utilities/changeLanguage'
 
 const Property: NextPage<{property: any, properties: any}> = ({property, properties}) => {
   
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
+  
+  const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la siguiente propiedad";
+
+  const handleShare = async () => {
+    if(navigator.share){
+      await navigator.share({
+        title: "Itaaj Realty",
+        url: window.location.href,
+      });
+    }
+  }
+  
   return (
     <Layout>
      <SEO title={property.name} description='Esta propiedad es perfecta para ti, vivie el sueño de tener vivienda propia' />
@@ -21,26 +33,26 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
       </div>
       <div className={styles.images}>
        <div className={styles.photo1}>
-        {/* <Image src={property.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />         */}
+        <Image src={property.images[0]} alt='Imagen numero 1 de la propiedad'  width={800} height={800} objectFit='cover' />       
        </div>
-       {/* <Image src={property.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
+       <Image src={property.images[1]}  alt='Imagen numero 2 de la propiedad' width={500} height={500} />
        { property.images[2] && (
           <Image src={property.images[2]}  alt='Imagen numero 3 de la propiedad' width={500} height={500} />        
-       )} */}
-       {/* {property.images[3] && (
+       )}
+        {property.images[3] && (
        <Image src={property.images[3]}  alt='Imagen numero 4 de la propiedad' width={500} height={500} />
         
        )}
        {property.images[4] && (
        <Image src={property.images[4]} alt='Imagen numero 5 de la propiedad'  width={500} height={500} />        
-       )} */}
+       )} 
        
       </div>
       <div className={styles.container}>
        <div>
        <div className={styles.main}>
         <p className={styles.price}>{DivisaFormater({value: property.price})}</p>       
-        <Link href="/"><a><i className='bx bx-share-alt' ></i> Compartir</a></Link>
+        <button onClick={handleShare}><i className='bx bx-share-alt' ></i> Compartir</button>
        </div>
        <button onClick={() => setOpen(true)} className={styles.price_sug}><i className='bx bx-purchase-tag-alt'></i> Realizar una propuesta</button>
        <div className={styles.amenities}>
@@ -138,10 +150,7 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
         <h2>Contactanos</h2>
         <input type="text" placeholder='Tu nombre' />
         <input type="text" placeholder='Tu e-mail(obligatorio)' />
-        <input type="text" placeholder='Tu telefono' />
-        <select name="" id="">
-         <option>Cual es el motivo de tu contacto?</option>
-        </select>
+        <input type="text" placeholder='Tu telefono' />        
         <label htmlFor="">
          <input type="checkbox" name="" id="" />
          <p>Quiero recibir alertas de inmuebles similares a este</p>
@@ -151,6 +160,8 @@ const Property: NextPage<{property: any, properties: any}> = ({property, propert
          <p>Acepto las condiciones de uso, la información basica de Proteccion de Datos y darme de alto en itaaj</p>
         </label>
         <button>Contactar</button>
+        <Link href={whatsappLink}><a className={styles.btn_whatsapp}>Whatsapp</a></Link>
+        
        </form>
        
       </div>
