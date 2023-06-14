@@ -70,7 +70,7 @@ export default Blog
 
 export const getServerSideProps: any = async () => {
   const res = await fetch(
-    "https://itaaf-api-production.up.railway.app/api/v1/posts"
+    "https://itaaj-api.onrender.com/api/v1/posts"
   );
 
   const result: any = await res.json();

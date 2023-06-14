@@ -70,7 +70,7 @@ export default Properties
 
 export const getServerSideProps: any = async () => {
   const res = await fetch(
-    "https://itaaf-api-production.up.railway.app/api/v1/properties"
+    "https://itaaj-api.onrender.com/api/v1/properties"
   );
 
   const result: any = await res.json();

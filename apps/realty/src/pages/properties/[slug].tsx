@@ -177,7 +177,7 @@ export const getServerSideProps: any = async (context:any) => {
   const { params } = context;
   const { slug } = params;
   const res = await fetch(
-    `https://itaaf-api-production.up.railway.app/api/v1/properties/${slug}`, {
+    `https://itaaj-api.onrender.com/api/v1/properties/${slug}`, {
     // `http://localhost:8000/api/v1/properties/${slug}`, {
       method: "GET",
       headers: {
@@ -187,7 +187,7 @@ export const getServerSideProps: any = async (context:any) => {
   );
   
   const resProperties = await fetch(
-    'https://itaaf-api-production.up.railway.app/api/v1/properties',
+    'https://itaaj-api.onrender.com/api/v1/properties',
     {
       method: 'GET',
       headers: {

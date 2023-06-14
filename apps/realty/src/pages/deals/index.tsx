@@ -104,7 +104,7 @@ const Deals: NextPage<{ properties: any }> = ({ properties })  => {
 
 export const getServerSideProps: any = async () => {
   const res = await fetch(
-    'https://itaaf-api-production.up.railway.app/api/v1/properties',
+    'https://itaaj-api.onrender.com/api/v1/properties',
     {
       method: 'GET',
       headers: {
