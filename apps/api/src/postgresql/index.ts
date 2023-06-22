@@ -24,8 +24,7 @@ export const initPostgres = async () => {
   await AppDataSource.initialize().then(() => {
    console.log('Connection has been established successfully instance');  
 }).catch((err) => console.log(err));
-  
- 
+   
  }catch(err){
   console.log("Unable to connect to the database", err);
  }
