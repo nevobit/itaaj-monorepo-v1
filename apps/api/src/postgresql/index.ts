@@ -14,7 +14,7 @@ export const initPostgres = async () => {
    password: PASSWORD,
    database: DATABASE,
    entities: [PropertySchema, PostSchema, OfficerSchema, ProposalSchema],
-   synchronize: true,
+   // synchronize: true,
    // dropSchema: true,
    ssl: {
     rejectUnauthorized: false

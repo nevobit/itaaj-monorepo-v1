@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import useTranslation from 'next-translate/useTranslation'
 import { Menu, X } from 'react-feather'
+import { useMediaQuery } from 'react-responsive';
 
 const language:any = {
   "en": "English",
@@ -23,6 +24,10 @@ const Header = () => {
     const locale = e.target.value;
     push(pathname, asPath, { locale });
   }
+
+  const isDesktop = useMediaQuery({ query: '(min-width: 768px)' });
+  const content = isDesktop ? t('common:publish') : "Publica";
+
   
   
   return (
@@ -51,6 +56,11 @@ const Header = () => {
           <option key={locale} value={locale}>{language[locale.toString()]}</option>        
         ))}
        </select>
+       <Link href="/create-property" passHref>
+              <a className={styles.publish}> 
+                {content}
+              </a>
+        </Link>
         <Link href={whatsappLink} passHref>
               <a target="_blank" rel="noopener noreferrer"> 
               {t('common:contact')}

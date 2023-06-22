@@ -18,11 +18,12 @@ export enum PropertyType {
   APARTAMENT= 'apartament',
   CONDO= 'condo',
   TOWNHOUSE= 'townhouse',
-  OTHER = 'other'
+  OTHER = 'other',
+  OFFICE = 'office', 
  }
  
 const CreatePropety: React.FC = () => {
-  const { isLoading, url, uploadImage, urls } = useUploadImage();
+  const { isLoading, url, uploadImage, urls, setUrls } = useUploadImage();
   const { slug } = useParams();
   const isCreate = !slug 
 
@@ -138,6 +139,7 @@ useEffect(() => {
       internal_number: _result.internal_number,
     });
     setAmenities(_result.amenities)
+    setUrls(_result.images)
   }
 }, [result])
 
@@ -146,13 +148,9 @@ useEffect(() => {
 useEffect(() => {
   if(success){
     dispatch(resetProperties())
-    navigate(`/${PrivateRoutes.PROPERTIES}`, {replace: true})    
+    navigate(PrivateRoutes.PROPERTIES, {replace: true})    
   }
 }, [dispatch, navigate, success])
-
-useEffect(() => {
-  console.log("loading",loading)
-}, [loading])
 
 
   return (

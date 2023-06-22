@@ -5,7 +5,8 @@ interface Texts {
 const texts:Texts = {
  house: 'Casa',
  apartament: 'Departamento',
- other: 'Terreno'
+ other: 'Terreno',
+ office: 'Oficina'
 }
 
 export const changeLanguage = (text: string) => {

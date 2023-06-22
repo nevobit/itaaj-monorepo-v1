@@ -110,7 +110,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
                 <a>
                   <div className={styles.image}>
                     <Image
-                      src={property.images[0]}
+                      src={property.images[0]? property.images[0] : '/dummy.webp' }
                       width={500}
                       height={350}
                       alt={property.name}

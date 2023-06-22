@@ -22,17 +22,6 @@ export const useUploadImage = () => {
         formData.append('file', image);
         formData.append('upload_preset', 'lsrzidsb');
         
-
-        // try {
-        //     const { data } = await rvApi.post('/upload/image', formData);
-        //     const newUrls: string[] = [...urls, data.url];
-        //     setUrls(newUrls);
-        //     setUrl(data.url);
-        //     setIsLoading(false);
-        // } catch (error) {
-        //     setIsLoading(false);
-        // }
-        
         try {
             const response = await axios.post(
               "https://api.cloudinary.com/v1_1/djksixova/image/upload",

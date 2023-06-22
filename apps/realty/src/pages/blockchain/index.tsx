@@ -1,6 +1,7 @@
 import Layout from '@/components/Layout'
 import styles from './Blockchain.module.css'
 import SEO from '@/components/seo/seo'
+import Image from 'next/image'
 
 const Blockchain = () => {
   return (
@@ -21,6 +22,7 @@ const Blockchain = () => {
         </ul>
        
       </div>
+      <Image src='/block1.png' width={500} height={500} alt="Blockchain iamge" />
      </section>
      </div>
      

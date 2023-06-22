@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Field, ImageInput, Input, TextEditor } from "@/components";
 import styles from "./Edit.module.css";
 import {useDispatch} from 'react-redux'
@@ -12,7 +12,7 @@ const placeholderImage = 'https://via.placeholder.com/300x300';
 
 
 const CreatePropety: React.FC = () => {
-  const { isLoading, url, uploadImage, urls } = useUploadImage();
+  const { isLoading, url, uploadImage, urls, setUrls } = useUploadImage();
   
   const [property, setProperty] = useState({
     id: uuid(),

@@ -52,6 +52,7 @@
 
 .options {
  display: flex;
+ align-items: center;
  gap: 2rem;
 }
 
@@ -67,6 +68,7 @@
  font-size: 1.4rem;
  border: 1px solid rgba(0, 0, 0, .5);
  padding-inline: 1rem;
+ width: auto;
 }
 
 .mobile_menu_btn{
@@ -78,6 +80,15 @@
 
 .mobile_menu{
  display: none;
+}
+
+.options .publish{
+    background-color: #fff;
+    color: var(--primary-color);
+    font-weight: 600;
+    width: 22rem;
+    text-align: center;
+    border: 1px solid var(--primary-color);
 }
 
 @media screen and (max-width:768px){
@@ -142,5 +153,8 @@
   border: 1px solid rgba(0, 0, 0, .1);
   height: 4.5rem;
  }
- 
+
+ .header .publish{
+  width: 10rem; 
+ }
 }
