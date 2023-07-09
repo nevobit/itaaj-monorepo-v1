@@ -31,6 +31,7 @@ const main = async (): Promise<void> => {
     { prefix: "api/v1" }
   );
 
+
   await server.listen({ port: Number(PORT), host: HOST || "0.0.0.0" }, (error, address) => {
     if (error) {
       server.log.error(error);
