@@ -101,6 +101,7 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
         <div className={styles.properties}>
           {properties
             ?.filter((property: any) => property.category == 'exclusive')
+            .sort((property:any) => property.price - property.price)
             .map((property: any) => (
               <Link
                 href={`/properties/exclusive/${property.slug}`}
@@ -250,8 +251,8 @@ const Home: NextPage<{ properties: any }> = ({ properties }) => {
             Contáctanos a través de nuestro WhatsApp y recibe ayuda de nuestros
             asesores.
           </p>
-          <Link href={whatsappLink}>
-            <a> Habla con un agente</a>
+          <Link href={whatsappLink} target="_blank">
+            <a target="_blank"> Habla con un agente</a>
           </Link>
         </div>
       </section>
@@ -263,7 +264,7 @@ export default Home;
 
 export const getServerSideProps: any = async () => {
   const res = await fetch(
-    'https://itaaj-api.onrender.com/api/v1/properties',
+    'https://itaaj-api-v0.onrender.com/api/v1/properties',
     {
       method: 'GET',
       headers: {

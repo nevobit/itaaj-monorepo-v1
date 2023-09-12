@@ -1,17 +1,131 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './CreateProperty.module.css'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
+import axios from 'axios';
+import {v4 as uuid} from 'uuid'
+import { useUploadImage } from '@/hooks/useUploadImage';
+import Loader from '@/components/Loader';
+import { ArrowLeft } from 'react-feather';
+import { GoogleOAuthProvider, GoogleLogin, CredentialResponse } from '@react-oauth/google';
 
 const CreateProperty = () => {
   const { t } = useTranslation();
   const [type, setType] = useState('house');
 
+  const handleChange = (event: any) => {
+    const { name, value } = event.target;
+    setProperty((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleChangeUser = (event: any) => {
+    const { name, value } = event.target;
+    setUser((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleChangeArea = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setProperty((prev) => ({ ...prev, area: { ...prev.area, [name]: value}}));
+  };
+
+  const [user, setUser] = useState({
+    email: "",
+    password: ""
+  });
+
+  const uuidD = uuid();
+  const [property, setProperty] = useState({
+    id: uuidD,
+    uuid: uuidD,
+    name: "",
+    address: "",
+    city: "",
+    state: "",
+    country: "Mexico",
+    price: 0,
+    description: "",
+    area: {
+      land_area: "",
+      total_area: "",
+      building_area: ""
+    },
+    images: [],
+    garage: 0,
+    bedrooms: 1,
+    bathrooms: 1,
+    antiquity: 0,
+    balcony: 0,
+    kitcken: 0,
+    propertyStatus: "",
+    type: type,
+    createdAt: new Date().toString(),
+    category: "general",
+    partner: "",
+    neighborhood:"",
+    street: "",
+    external_number: 0,
+    internal_number: 0,
+    slug:""
+  });
+
+  const [account, setAccount] = useState(false);
+  const onSubmit = async() => {
+    try{
+      await axios.post('https://itaaj-api-v0.onrender.com/api/v1/properties', {...property, images:urls}, {
+        headers: {
+          "api-key": "a0341d0de71a21b122a134576803f9fea2e9841a307b4e26f9240ac2f7d363ff3018a17f2d7f3ecb5a9fe62327e4eaf306864ec741e6432aa50faaf9d92aa6bd"
+      }
+      });
+
+      alert("Propiedad enviado correctamente")
+    }catch(err){
+      console.log(err)
+    }
+  }
+
+  const registerUser = (e:any) => {
+    e.preventDefault();
+    setAccount(true);
+    localStorage.setItem('user', JSON.stringify(user))
+  }
+
+  const { isLoading, uploadImage, urls } = useUploadImage();
+
+    
+  const addImages = (e: any) => {
+    uploadImage(e?.target?.files![0]);
+  };
+
+  const handleGoogleSuccess = async(credentialsResponse: CredentialResponse) => {
+    console.log(credentialsResponse)
+
+    if(credentialsResponse.credential){
+      console.log(credentialsResponse)
+      const token_id = credentialsResponse.credential;
+    localStorage.setItem('user', JSON.stringify({name:token_id, password: credentialsResponse.clientId}))
+    }
+  }
+
+
+
+  const handleGoogleError = () => {
+
+  }
+
+  useEffect(() => {
+    const item = localStorage.getItem('user');
+    if(item){
+      setAccount(true);
+    }
+  }, [])
+ 
+
   const whatsappLink = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com por la sigueinte propiedad`;
+  const whatsappLinkHelp = `https://api.whatsapp.com/send?phone=+5219995471508&text=Te hablo de la pagina Itaaj.com, porque necesito ayuda para valorar mi propiedad`;
 
   return (
-    <div>
+    <GoogleOAuthProvider  clientId="10748540302-3radc5uefaie52b9sfif74l8d5j1s3e9.apps.googleusercontent.com">
          <header className={styles.header}>
       
       <nav className={styles.nav}>
@@ -24,15 +138,15 @@ const CreateProperty = () => {
       </nav>
       <div className={styles.options}>
 
-        <Link href={whatsappLink} passHref>
+        <Link href={whatsappLink} passHref target="_blank">
               <a target="_blank" rel="noopener noreferrer"> 
               {t('common:contact')}
               </a>
         </Link>
       </div>
     </header>
-
     <div className={styles.container}>
+    <Link href='/'><a className={styles.back}><ArrowLeft /> Atras</a></Link>
 
       <div>
        <h3>Tipo de propiedad</h3>
@@ -73,70 +187,87 @@ const CreateProperty = () => {
       <div>
        <h3>Caracteristicas basicas</h3>
        <div>
+       <div className={styles.field}>
+          <label>Nombre para tu propiedad</label>
+          <input onChange={handleChange} name='name' placeholder='Ingresa un nombre' />
+        </div>
         <div className={styles.field}>
           <label>Precio de venta</label>
-          <input type="text" placeholder='Precio de venta' />
-          <span className={styles.tip}>¿Dudas con el precio? <Link href='/'>Contactanos</Link></span>
+          <input onChange={handleChange} name='price' type="number" placeholder='Precio de venta' />
+          <span className={styles.tip}>¿Dudas con el precio? <Link href={whatsappLinkHelp} target='_blank'>Contactanos</Link></span>
         </div>
         <div className={styles.field}>
         <label>Superficie</label>
-        <input type="text" placeholder='Superficie' />
+        <input onChange={handleChangeArea} name='total_area' type="text" placeholder='Superficie' />
         </div>
        </div>
        <div>
         <div className={styles.col}>
           <div className={styles.field}>
           <label>Habitaciones</label>
-          <input type=""  defaultValue={1} placeholder='Habitacionces' />
+          <input type='number' name='bedrooms' onChange={handleChange}  defaultValue={1} placeholder='Habitacionces' />
           </div>
           <div className={styles.field}>
           <label>Baños</label>
-          <input type=""  defaultValue={1} placeholder='Baños' />
+          <input type="number" name='bathrooms'  onChange={handleChange} defaultValue={1} placeholder='Baños' />
           </div>
         </div>
         <div className={styles.col}>
           <div className={styles.field}>
           <label>Estado del inmueble</label>
-          <select name="" id="">
+          <select onChange={handleChange}  name="propertyStatus" id="">
           <option value="">Selecciona</option>
-            <option value="">Casi nuevo</option>
-            <option value="">Muy bien</option>
-            <option value="">Bien</option>
-            <option value="">A reformar</option>
-            <option value="">Reformado</option>
+            <option value="Casi nuevo">Casi nuevo</option>
+            <option value="Muy bien">Muy bien</option>
+            <option value="Bien">Bien</option>
+            <option value="A reformar">A reformar</option>
+            <option value="Reformado">Reformado</option>
           </select>
           </div>
           <div className={styles.field}>
           <label>Antigüedad</label>
-          <select name="" id="">
+          <select onChange={handleChange}  name="antiquity" id="">
 
-          <option value="">Menos de 1 año</option>
-            <option value="">1 a 5 años</option>
-            <option value="">5 a 10 años</option>
-            <option value="">10 a 20 años</option>
-            <option value="">20 a 30 años</option>
-            <option value="">30 a 50 años</option>
-            <option value="">50 a 70 años</option>
-            <option value="">70 a 100 años</option>
-            <option value="">más de 100 años</option>
+          <option value={0}>Menos de 1 año</option>
+            <option value={1}>1 a 5 años</option>
+            <option value={510}>5 a 10 años</option>
+            <option value={1020}>10 a 20 años</option>
+            <option value={2030}>20 a 30 años</option>
+            <option value={3050}>30 a 50 años</option>
+            <option value={5070}>50 a 70 años</option>
+            <option value={70100}>70 a 100 años</option>
+            <option value={100}>más de 100 años</option>
           </select>
           </div>
         </div>
        </div>
       </div>
       <div className={styles.field}>
-       <h3>Dirección del inmueble</h3>
+       <h3>Ubicación del inmueble</h3>
+       <div className={styles.col}>
+
+     
        <div className={styles.field}>
-       <input type="" placeholder='Calle, número, colonia'/>
+       <h4>Ciudad</h4>
+       <input type="text" name='city' onChange={handleChange} placeholder=''/>
+       </div>
+       <div className={styles.field}>
+       <h4>Estado</h4>
+       <input type="text" name='state' onChange={handleChange} placeholder=''/>
        </div>
 
+      </div>
+      <div className={styles.field}>
+       <h4>Dirección</h4>
+       <input type="text" name='address' onChange={handleChange} placeholder=''/>
+       </div>
        <div className="Properties_map__pm5CH"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15021635.698595606!2d-113.2586835703016!3d23.192397844676776!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x84043a3b88685353%3A0xed64b4be6b099811!2sMexico!5e0!3m2!1sen!2sco!4v1681829545463!5m2!1sen!2sco" width="700" height="450" loading="lazy" ></iframe></div>
       </div>
 
 <div className={styles.field}>
     <h3>Fotos de tu propiedad</h3>
     <div className={styles.file_input}>
-      <input type="file" name="image" id="image" accept=".png,.jpg,.jpeg,.svg" />
+      <input type="file" onChange={(e) => addImages(e)} name="image" id="image" accept=".png,.jpg,.jpeg,.svg" />
       <label htmlFor="image">
         <div className={styles.input_box}>
           <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -144,7 +275,10 @@ const CreateProperty = () => {
             <polyline points="17 8 12 3 7 8"></polyline>
             <line x1="12" y1="3" x2="12" y2="15"></line>
           </svg>
+          {isLoading? <Loader /> : (
           <span>Puedes subir hasta 30 fotos</span>
+
+          )}
         </div>
         <div className={styles.file_types}>
           <span>Archivos permitidos: .png, .jpg, .jpeg</span>
@@ -153,20 +287,49 @@ const CreateProperty = () => {
 
       </label>
     </div>
+    <div className={styles.images_cont}>
+      {urls?.map((ur) => (
+        <img key={ur} src={ur} alt="" className={styles.image_create} />
+      ))}
     </div>
+    </div>
+  
 
     
     <div  className={styles.field}>
     <h3>Descripcion</h3>
-    <textarea name="" id="" placeholder='La gente valora informacion que no aparece en las fotos, como luminosidad o altura de la vivienda. Asi como informacion relevante de la zona'></textarea>
+    <textarea onChange={handleChange} name="description" id="" placeholder='La gente valora informacion que no aparece en las fotos, como luminosidad o altura de la vivienda. Asi como informacion relevante de la zona'></textarea>
     </div>
 
-    </div>
+        {!account  && (
+
+      <div className={styles.account}>
+        <h3>Accede a tu cuenta</h3>
+        <div className={styles.field}>
+       <input type="text" name='email' onChange={handleChangeUser} placeholder='Correo electronico'/>
+       </div>
+       <div className={styles.field}>
+       <input type="password" name='password' onChange={handleChangeUser} placeholder='Contraseña'/>
+       </div>
+        <Link href='/'><a className={styles.forgot}>He olvidado mi contraseña</a></Link>
+        <button type='button' onClick={registerUser} >Iniciar sesion</button>
+
+        <p>o</p>
+        <GoogleLogin  width="1000px" useOneTap onError={handleGoogleError} onSuccess={handleGoogleSuccess} />
+
+        <Link href='/'><a className={styles.register}>No tengo cuenta y quiero registrarme</a></Link>
+      </div>
+    )}
+
+</div>
+
 
     <div className={styles.footer}>
-      <button>Continuar</button>
+      <button style={{
+        opacity: account? 1 : .5
+      }} className={styles.opacity} onClick={onSubmit}>Continuar</button>
     </div>
-    </div>
+    </GoogleOAuthProvider>
   )
 }
 

@@ -94,7 +94,7 @@ const Deals: NextPage<{ properties: any }> = ({ properties })  => {
             </div>
           </li>
         </ul>
-        <button className={styles.investment_btn}>¡Quiero invertir!</button>
+        <button className={styles.investment_btn}>¡Quiero participar!</button>
       </section>
       </div>
       
@@ -104,7 +104,7 @@ const Deals: NextPage<{ properties: any }> = ({ properties })  => {
 
 export const getServerSideProps: any = async () => {
   const res = await fetch(
-    'https://itaaj-api.onrender.com/api/v1/properties',
+    'https://itaaj-api-v0.onrender.com/api/v1/properties',
     {
       method: 'GET',
       headers: {

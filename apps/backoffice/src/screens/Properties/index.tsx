@@ -10,6 +10,9 @@ import { deleteProperties, getProperties, resetProperties } from '@/redux/states
 import { AppStore } from '@/redux/store';
 import EmptyTable from '@/container/EmptyTable';
 import { PrivateRoutes } from '@/constant-definitions';
+import XLSX from 'sheetjs-style';
+import ExportExcel from '@/utilities/ExportToExcel';
+
 const Properties = () => {
   const [search, setSearch] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -31,6 +34,12 @@ const Properties = () => {
           dispatch(resetProperties() as any);
       }
   }, [dispatch, success, limit, page, search]);
+
+
+  const fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charet=UTF-8';
+  const fileExtension = '.xlsx';
+
+
   
   return (
     <Layout>
@@ -41,7 +50,11 @@ const Properties = () => {
         <Field>
           <Input type="search" placeholder="Search properties" onChange={({ target }) => setSearch(target.value)} />
         </Field>
+        <span>
+        <ExportExcel items={result.items} />
         <Link to="/properties/create">Add Property</Link>
+        </span>
+
       </div>
       
       {loading ? (

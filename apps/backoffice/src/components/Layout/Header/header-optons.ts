@@ -24,6 +24,10 @@ export const headerOptions: Option[] = [
         title: 'Realty',
         items: [
             {
+                path: PrivateRoutes.DEVELOPMENTS,
+                label: 'Developments',
+            },
+            {
                 path: PrivateRoutes.PROPERTIES,
                 label: 'Properties',
             },

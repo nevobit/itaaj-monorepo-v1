@@ -47,7 +47,7 @@ const Property = ({images, price, type, name, category, bedrooms, bathrooms, are
         </div>
        <div className={styles.options}>
         <Link href='/'><a><i className='bx bx-envelope'></i> Contactar</a></Link>
-        <Link href={whatsappLink}><a><i className='bx bxl-whatsapp'></i> Mensaje</a></Link>
+        <Link href={whatsappLink} target="_blank"><a target="_blank"><i className='bx bxl-whatsapp'></i> Mensaje</a></Link>
        </div>
       </div>
       </a>

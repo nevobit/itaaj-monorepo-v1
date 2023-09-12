@@ -4,11 +4,12 @@ import { headerOptions } from './header-optons';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { PrivateRoutes } from '@/constant-definitions';
+import { MoreVertical } from 'react-feather';
 
 const Header = () => {
     const user = {
-        name: 'Admin',
-        lastname: '',
+        name: 'Nestor',
+        lastname: 'Mosquera',
         username: 'admin',
         position: '',
         image: '',
@@ -17,11 +18,9 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={styles.header_left}>
-                <div className={styles.logo}>
-                    <img src="/img/logo/isotipo.png" />
-                </div>
+                <h2>Itaaj Realty</h2>
                 <nav className={styles.nav}>
-                    <Link to={PrivateRoutes.HOME}>
+                    {/* <Link to={PrivateRoutes.HOME}>
                         Home
                     </Link>
                     {headerOptions.map((option) => (
@@ -31,7 +30,7 @@ const Header = () => {
                             items={option.items}
                         />
                     ))}
-                    
+                     */}
                 </nav>
             </div>
 
@@ -47,6 +46,7 @@ const Header = () => {
                     </h2>
                     <p>{user.position}</p>
                 </div>
+                <MoreVertical />
             </div>
         </header>
     );

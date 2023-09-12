@@ -43,7 +43,7 @@ const Modal = ({ open, closeModal, property }: Props) => {
     e.preventDefault(); 
     try{
       setLoading(true);
-      const { data } = await axios.post('https://itaaj-api.onrender.com/api/v1/proposals', proposal);      
+      const { data } = await axios.post('https://itaaj-api-v0.onrender.com/api/v1/proposals', proposal);      
       console.log(data);
       setLoading(false);
       Swal.fire({

@@ -304,3 +304,86 @@
     color: #fff;
     font-weight: 600;
    }
+
+   .image_create{
+    width: 10rem;
+    height: 10rem;
+    object-fit: contain;
+   }
+
+   .images_cont
+  {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .field h4{
+    font-size: 1.3rem;
+    margin-bottom: .5rem;
+    font-weight: 600;
+    color: rgba(0, 0, 0, .8);
+  }
+
+  .back{
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: .5rem;
+  }
+
+  .account{
+    max-width: 40rem;
+    margin: 0 auto;
+  }
+
+  .account h3{
+    font-weight: 600;
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .account button{
+    display: block;
+    width: 100%;
+    height: 4.5rem;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.6rem;
+    border-radius: .5rem;
+    margin-top: 1.5rem;
+  }
+
+
+  .forgot{
+    font-weight: 300;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+  }
+
+  .account p{
+    text-align: center;
+    opacity: .5;
+    margin-block: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .account a{
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .account .register{
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    display: inline-block;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+  }

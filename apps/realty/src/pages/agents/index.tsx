@@ -42,8 +42,8 @@ const Agents:NextPage = () => {
             Contáctanos a través de nuestro WhatsApp y recibe ayuda de nuestros
             asesores.
           </p>
-          <Link href={whatsappLink}>
-            <a> Habla con un agente</a>
+          <Link href={whatsappLink} target="_blank">
+            <a target="_blank"> Habla con un agente</a>
           </Link>
         </div>
       </section>

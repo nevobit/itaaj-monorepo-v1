@@ -10,6 +10,10 @@ import CreatePost from "./screens/Posts/Create";
 import Home from "./screens/Home";
 import Signin from "./screens/Signin";
 import Proposals from "./screens/Proposals";
+import Developments from "./screens/Developments";
+import CreateDevelopment from "./screens/Developments/Create";
+import Property from "./screens/Property";
+import Leads from "./screens/Leads";
 
 const Application = () => {
   return (
@@ -18,12 +22,22 @@ const Application = () => {
           <Routes>
             <Route path={PublicRoutes.SIGNIN} element={<Signin />} />
             <Route path={PrivateRoutes.PROPERTIES} element={<Properties />} />
+            <Route path={PrivateRoutes.DEVELOPMENTS} element={<Developments />} />
             <Route path={PrivateRoutes.POSTS} element={<Posts />} />
             <Route path={PrivateRoutes.PROPOSALS} element={<Proposals />} />
             <Route path={PrivateRoutes.HOME} element={<Home />} />
+            <Route path='leads' element={<Leads />} />
+
+            <Route element={<Layout />}>
+              <Route path="/prop" element={<Property />} />
+            </Route>
             <Route
               path={PrivateRoutes.PROPERTIES_CREATE}
               element={<CreatePropety />}
+            />   
+             <Route
+              path={PrivateRoutes.DEVELOPMENTS_CREATE}
+              element={<CreateDevelopment />}
             />   
             <Route
               path={PrivateRoutes.PROPERTIES_EDIT}

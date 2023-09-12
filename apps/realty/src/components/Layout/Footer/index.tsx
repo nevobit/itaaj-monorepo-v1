@@ -28,6 +28,14 @@ const Footer = () => {
     link.rel = 'noopener noreferrer';
     link.click();
   };
+  const handleDownloadPriva = () => {
+    const link = document.createElement('a');
+    link.href = '/Políticas de Devolución v2.docx';
+    link.download = 'Políticas de Devolución v2.docx'; 
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.click();
+  };
   
   const whatsappLink = typeof window !== 'undefined' ? `https://api.whatsapp.com/send?phone=+5219995471508&text=Hola, me interesa hacer una consulta sobre ${window.location.href}` : "https://api.whatsapp.com/send?phone=+5219995471508&text=Hola, me interesa hacer una consulta sobre";
   
@@ -72,6 +80,7 @@ const Footer = () => {
             <li>¿Quiénes somos?</li>
             <li>Nuestro Equipo</li>
             <li><button onClick={handleDownload}>Términos y condiciones</button></li>
+            <li><button onClick={handleDownloadPriva} >Política de devolucion</button></li>
             <li>Tecnología Blockchain</li>
           </ul>
           <ul>
@@ -107,6 +116,7 @@ const Footer = () => {
           <Link href='/legal'>Aviso legal</Link>
           <Link href='/data'>Protección de datos</Link>
           <Link href='/legal'>Política de cookies</Link>
+          
           </div>
           <select value={lang} onChange={changeLanguage} >
         {locales?.map((locale) => (
@@ -116,8 +126,8 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.float}>
-        <Link href={whatsappLink}>
-          <a title="Boton Whatsapp">
+        <Link href={whatsappLink} target="_blank">
+          <a title="Boton Whatsapp" target="_blank">
             <i className="bx bxl-whatsapp"></i>{' '}
           </a>
         </Link>

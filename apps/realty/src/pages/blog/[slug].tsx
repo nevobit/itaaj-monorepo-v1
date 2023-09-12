@@ -38,8 +38,8 @@ const Post: NextPage<{post: any}> = ({post}) => {
             Contáctanos a través de nuestro WhatsApp y recibe ayuda de nuestros
             asesores.
           </p>
-          <Link href={whatsappLink}>
-            <a> Habla con un agente</a>
+          <Link href={whatsappLink} target="_blank">
+            <a target="_blank"> Habla con un agente</a>
           </Link>
         </div>
       </section>
@@ -56,7 +56,7 @@ export const getServerSideProps: any = async (context:any) => {
   console.log(slug);
   
   const res = await fetch(
-    `https://itaaj-api.onrender.com/api/v1/posts/${slug}`, {
+    `https://itaaj-api-v0.onrender.com/api/v1/posts/${slug}`, {
     // `http://localhost:8000/api/v1/properties/${slug}`, {
       method: "GET",
       headers: {

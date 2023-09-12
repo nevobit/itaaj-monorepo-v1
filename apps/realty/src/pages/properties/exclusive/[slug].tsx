@@ -75,8 +75,8 @@ const Property: NextPage<{ property: any }> = ({ property }) => {
           <p>{property.country}</p>
             <div className={styles.buttons_list}>
           <button onClick={handleShare} className={styles.btn_share}><i className='bx bx-share-alt' ></i> Compartir</button>
-          <button>CONTACTO</button>
-          <Link href={whatsappLink}><a className={styles.btn_whatsapp}>Whatsapp</a></Link>
+          {/* <button>CONTACTO</button> */}
+          <Link href={whatsappLink} target="_blank" ><a className={styles.btn_whatsapp} target="_blank">Whatsapp</a></Link>
         
             </div>
         </div>
@@ -116,7 +116,7 @@ export const getServerSideProps: any = async (context: any) => {
   const { params } = context;
   const { slug } = params;
   const res = await fetch(
-    `https://itaaj-api.onrender.com/api/v1/properties/${slug}`, {
+    `https://itaaj-api-v0.onrender.com/api/v1/properties/${slug}`, {
     // `http://localhost:8000/api/v1/properties/${slug}`,
     // {
       method: 'GET',
