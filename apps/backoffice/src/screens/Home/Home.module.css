@@ -15,5 +15,8 @@
  border-radius: .5rem;
  color: var(--primary-color);
  font-weight: 600;
+<<<<<<< HEAD
  box-shadow: var(--shadow);
+=======
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 }

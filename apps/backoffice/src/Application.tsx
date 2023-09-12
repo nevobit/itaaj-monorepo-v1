@@ -9,16 +9,20 @@ import Posts from "./screens/Posts";
 import CreatePost from "./screens/Posts/Create";
 import Home from "./screens/Home";
 import Signin from "./screens/Signin";
+<<<<<<< HEAD
 import Proposals from "./screens/Proposals";
 import Developments from "./screens/Developments";
 import CreateDevelopment from "./screens/Developments/Create";
 import Property from "./screens/Property";
 import Leads from "./screens/Leads";
+=======
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 
 const Application = () => {
   return (
     <Suspense fallback={<Loader />}>
       <BrowserRouter>
+<<<<<<< HEAD
           <Routes>
             <Route path={PublicRoutes.SIGNIN} element={<Signin />} />
             <Route path={PrivateRoutes.PROPERTIES} element={<Properties />} />
@@ -46,6 +50,23 @@ const Application = () => {
             <Route path={PrivateRoutes.POSTS_CREATE} element={<CreatePost />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+=======
+        
+          <Routes>
+            <Route path={PublicRoutes.SIGNIN} element={<Signin />} />
+            <Route path={PrivateRoutes.PROPERTIES} element={<Properties />} />
+            <Route path={PrivateRoutes.POSTS} element={<Posts />} />
+            <Route path={PrivateRoutes.HOME} element={<Home />} />
+            <Route
+              path={PrivateRoutes.PROPERTIES_CREATE}
+              element={<CreatePropety />}
+            />
+            <Route path={PrivateRoutes.POSTS_CREATE} element={<CreatePost />} />
+
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
       </BrowserRouter>
     </Suspense>
   );

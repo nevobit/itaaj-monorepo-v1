@@ -8,7 +8,11 @@ const Home = () => {
  const { properties } = useGetProperties();
  
   return (
+<<<<<<< HEAD
     <Layout>
+=======
+    <>
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
       <div className={styles.elements}>
         <div className={styles.card}>
           {posts.items?.length} Posts
@@ -17,7 +21,11 @@ const Home = () => {
           {properties.items?.length} Properties
         </div>
       </div>
+<<<<<<< HEAD
     </Layout>
+=======
+    </>
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
   )
 }
 

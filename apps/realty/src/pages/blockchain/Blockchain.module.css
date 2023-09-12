@@ -1,4 +1,8 @@
 .hero_back{
+<<<<<<< HEAD
+=======
+ background-color: #15a0b832;
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 }
 
 .hero{
@@ -64,6 +68,7 @@
 
 .future > div h2{
  font-size: 2rem;
+<<<<<<< HEAD
 }
 
 .list{
@@ -97,3 +102,6 @@
  margin-bottom: 2.5rem;
  
 }
+=======
+}
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31

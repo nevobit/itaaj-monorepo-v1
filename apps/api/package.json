@@ -18,7 +18,11 @@
     "bcrypt": "^5.1.0",
     "dotenv": "16.0.3",
     "fastify": "4.15.0",
+<<<<<<< HEAD
     "gpt3-tokenizer": "^1.1.5",
+=======
+    "json-server": "0.17.3",
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
     "jsonwebtoken": "^9.0.0",
     "mysql": "^2.18.1",
     "openai": "^3.3.0",

@@ -4,7 +4,10 @@ import { headerOptions } from './header-optons';
 import styles from './Header.module.css';
 import { Link } from 'react-router-dom';
 import { PrivateRoutes } from '@/constant-definitions';
+<<<<<<< HEAD
 import { MoreVertical } from 'react-feather';
+=======
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 
 const Header = () => {
     const user = {
@@ -20,7 +23,11 @@ const Header = () => {
             <div className={styles.header_left}>
                 <h2>Itaaj Realty</h2>
                 <nav className={styles.nav}>
+<<<<<<< HEAD
                     {/* <Link to={PrivateRoutes.HOME}>
+=======
+                    <Link to={PrivateRoutes.HOME}>
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
                         Home
                     </Link>
                     {headerOptions.map((option) => (

@@ -20,7 +20,11 @@ export const login = async ({username, password}: User) => {
   throw new Error('Invalid credentials');
  }
  
+<<<<<<< HEAD
  const token = jwt.sign({uuid: officer[0]?.uuid}, JWT_SECRET!, {expiresIn: '5d'})
+=======
+ const token = jwt.sign({uuid: officer[0]?.uuid}, JWT_SECRET!, {expiresIn: '24h'})
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
  
  return { token };
 }

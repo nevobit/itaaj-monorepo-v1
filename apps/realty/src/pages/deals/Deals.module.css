@@ -23,7 +23,11 @@
 
 .banner h1{
  text-transform: uppercase;
+<<<<<<< HEAD
  font-size: 2.5rem;
+=======
+ font-size: 1.6rem;
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
  color: #fff;
  position: relative;
 }
@@ -36,7 +40,10 @@
 .banner p{
  position: relative;
  text-align: center;
+<<<<<<< HEAD
  font-size: 2.5rem;
+=======
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 }
 
 .info{
@@ -131,6 +138,11 @@
 .project{
  display: grid;
  grid-template-columns: 1fr 1fr;
+<<<<<<< HEAD
+=======
+ /* align-items: center; */
+
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
  gap: 10rem;
 }
 
@@ -238,6 +250,7 @@
  padding-left: 15rem;
 }
 
+<<<<<<< HEAD
 .copy p span{
  text-transform: lowercase;
  display: inline-block;
@@ -333,4 +346,8 @@
  padding: 1rem;
 }
 
+=======
+.deal_description{
+ 
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 }

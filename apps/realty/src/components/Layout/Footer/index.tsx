@@ -47,6 +47,7 @@ const Footer = () => {
           <h2 className={styles.copy}>
           </h2>
           <div className={styles.networks}>
+<<<<<<< HEAD
             <Link href="https://instagram.com/itaaj.mx?igshid=YmMyMTA2M2Y=" passHref>
               <a target="_blank" rel="noopener noreferrer"> 
                 <i className="bx bxl-instagram"></i>
@@ -56,6 +57,13 @@ const Footer = () => {
               <a target="_blank" rel="noopener noreferrer"> 
                 <i className="bx bxl-facebook"></i>
               </a>
+=======
+            <Link href="https://instagram.com/itaaj.mx?igshid=YmMyMTA2M2Y=">
+              <i className="bx bxl-instagram"></i>
+            </Link>
+            <Link href="https://www.facebook.com/itaajrealty">
+              <i className="bx bxl-facebook"></i>
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
             </Link>
             <Link href="/" passHref>
               <a target="_blank" rel="noopener noreferrer"> 
@@ -85,6 +93,7 @@ const Footer = () => {
           </ul>
           <ul>
             <li className={styles.title}>Links Rapidos</li>
+<<<<<<< HEAD
             <Link href="/agents" >
               <a > 
                 <li>Asesores Externos</li>              
@@ -105,6 +114,15 @@ const Footer = () => {
           <ul>
             <li className={styles.title}>Contactanos</li>
             <li>Rio Pánuco 91. Int 22 Colonia Cuauhtémoc Ciudad de México</li>
+=======
+            <li>Asesores Externos</li>
+            <li>Blog</li>
+            <li>Portafolio de desarrolladores</li>
+          </ul>
+          <ul>
+            <li className={styles.title}>Contactanos</li>
+            <li>Rio Panuco 91. Int 22 Colonia Cuauhtémoc Ciudad de México</li>
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
             <li>+52 1 999 547 1508</li>
             <li>contacto@itaaj.com.mx</li>
           </ul>

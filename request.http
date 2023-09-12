@@ -4,6 +4,7 @@ Content-Type: application/json
 {
  "username":"pavel",
  "password":"pavel"
+<<<<<<< HEAD
 }
 
 ###
@@ -16,4 +17,6 @@ Content-Type: application/json
  "lastname": "Mosquera",
  "username": "nestor",
  "password": "mosquera"
+=======
+>>>>>>> 3a2f2097101c63c4b3e12a7ddaf38509b021bf31
 }
